@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Villa Serenity — House Policy</title>
+<link href="https://fonts.googleapis.com/css2?family=Enriqueta:wght@400;600;700&family=Nunito:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --teal: #7FA8B8;
+  --teal-dark: #3A6878;
+  --teal-bg: #EEF5F8;
+  --teal-hdr: #C8DDE5;
+  --dark: #1C2B33;
+  --grey: #7A8F99;
+  --warm: #8B5E3C;
+  --warm-bg: #FFF8F0;
+  --white: #ffffff;
+  --border: rgba(127,168,184,0.2);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Nunito', sans-serif;
+  background: #f7fafb;
+  color: var(--dark);
+  min-height: 100vh;
+}
+
+/* ── HEADER ── */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+  padding: 0 32px;
+  height: 68px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.logo {
+  font-family: 'Enriqueta', serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--dark);
+  white-space: nowrap;
+}
+.logo span { color: var(--teal); }
+
+.lang-switcher {
+  display: flex;
+  background: var(--teal-bg);
+  border-radius: 100px;
+  padding: 4px;
+  gap: 2px;
+  flex-shrink: 0;
+}
+
+.lang-btn {
+  padding: 7px 18px;
+  border: none;
+  background: transparent;
+  color: var(--grey);
+  font-family: 'Nunito', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  border-radius: 100px;
+  cursor: pointer;
+  transition: all .25s cubic-bezier(.4,0,.2,1);
+  letter-spacing: .04em;
+}
+.lang-btn.active {
+  background: var(--teal);
+  color: var(--white);
+  box-shadow: 0 2px 12px rgba(127,168,184,.45);
+}
+.lang-btn:hover:not(.active) {
+  color: var(--teal-dark);
+  background: rgba(127,168,184,.15);
+}
+
+/* ── HERO ── */
+.hero {
+  background: linear-gradient(135deg, var(--teal) 0%, var(--teal-dark) 100%);
+  padding: 64px 32px 56px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -60px; right: -60px;
+  width: 300px; height: 300px;
+  background: rgba(255,255,255,.06);
+  border-radius: 50%;
+  pointer-events: none;
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -80px; left: -40px;
+  width: 250px; height: 250px;
+  background: rgba(255,255,255,.04);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.hero-badge {
+  display: inline-block;
+  background: rgba(255,255,255,.18);
+  color: rgba(255,255,255,.95);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  padding: 5px 16px;
+  border-radius: 100px;
+  margin-bottom: 20px;
+  border: 1px solid rgba(255,255,255,.25);
+}
+
+.hero h1 {
+  font-family: 'Enriqueta', serif;
+  font-size: clamp(26px, 5vw, 38px);
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 14px;
+  line-height: 1.2;
+}
+
+.hero p {
+  color: rgba(255,255,255,.8);
+  font-size: 15px;
+  font-style: italic;
+  max-width: 480px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* ── CONTENT ── */
+.content {
+  max-width: 740px;
+  margin: 0 auto;
+  padding: 48px 24px 80px;
+}
+
+/* ── SECTION CARD ── */
+.section-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+  margin-bottom: 14px;
+  transition: box-shadow .2s ease, transform .2s ease;
+  animation: fadeUp .4s ease both;
+}
+.section-card:hover {
+  box-shadow: 0 6px 28px rgba(127,168,184,.18);
+  transform: translateY(-1px);
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.section-card:nth-child(1)  { animation-delay: .05s; }
+.section-card:nth-child(2)  { animation-delay: .08s; }
+.section-card:nth-child(3)  { animation-delay: .11s; }
+.section-card:nth-child(4)  { animation-delay: .14s; }
+.section-card:nth-child(5)  { animation-delay: .17s; }
+.section-card:nth-child(6)  { animation-delay: .20s; }
+.section-card:nth-child(7)  { animation-delay: .23s; }
+.section-card:nth-child(8)  { animation-delay: .26s; }
+.section-card:nth-child(9)  { animation-delay: .29s; }
+.section-card:nth-child(10) { animation-delay: .32s; }
+.section-card:nth-child(11) { animation-delay: .35s; }
+.section-card:nth-child(12) { animation-delay: .38s; }
+.section-card:nth-child(13) { animation-delay: .41s; }
+.section-card:nth-child(14) { animation-delay: .44s; }
+.section-card:nth-child(15) { animation-delay: .47s; }
+.section-card:nth-child(16) { animation-delay: .50s; }
+
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 18px 22px;
+  background: linear-gradient(90deg, rgba(127,168,184,.07) 0%, transparent 100%);
+  border-bottom: 1px solid var(--border);
+  cursor: pointer;
+  user-select: none;
+}
+
+.section-num {
+  width: 30px; height: 30px;
+  border-radius: 50%;
+  background: var(--teal);
+  color: var(--white);
+  font-size: 12px;
+  font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  font-family: 'Enriqueta', serif;
+}
+
+.section-title {
+  font-family: 'Enriqueta', serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--dark);
+  flex: 1;
+}
+
+.section-chevron {
+  color: var(--teal);
+  font-size: 12px;
+  transition: transform .25s;
+  flex-shrink: 0;
+}
+.section-card.open .section-chevron {
+  transform: rotate(180deg);
+}
+
+.section-body {
+  padding: 18px 22px 22px;
+  display: none;
+}
+.section-card.open .section-body {
+  display: block;
+}
+
+.section-body p {
+  font-size: 14px;
+  color: #3A4A52;
+  line-height: 1.75;
+  margin-bottom: 10px;
+}
+.section-body p:last-child { margin-bottom: 0; }
+
+.section-body ul {
+  list-style: none;
+  padding: 0;
+  margin: 8px 0;
+}
+.section-body ul li {
+  font-size: 14px;
+  color: #3A4A52;
+  line-height: 1.6;
+  padding: 4px 0 4px 20px;
+  position: relative;
+}
+.section-body ul li::before {
+  content: '·';
+  position: absolute; left: 6px;
+  color: var(--teal);
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1.2;
+}
+.section-body ul li.check::before {
+  content: '✓';
+  font-size: 13px;
+  color: #4caf7d;
+  line-height: 1.6;
+}
+
+.note {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  background: var(--warm-bg);
+  border: 1px solid rgba(139,94,60,.18);
+  border-radius: 8px;
+  padding: 12px 16px;
+  margin-top: 12px;
+  font-size: 13px;
+  color: var(--warm);
+  line-height: 1.6;
+}
+.note-icon { flex-shrink: 0; font-size: 15px; margin-top: 1px; }
+
+.highlight {
+  background: var(--teal-bg);
+  border-radius: 6px;
+  padding: 10px 14px;
+  margin: 10px 0;
+  font-size: 14px;
+  color: var(--teal-dark);
+  font-weight: 600;
+}
+
+/* ── AGREEMENT BOX ── */
+.agreement {
+  background: linear-gradient(135deg, var(--teal-bg) 0%, #e0eff5 100%);
+  border: 1px solid var(--teal-hdr);
+  border-radius: 14px;
+  padding: 32px 28px;
+  text-align: center;
+  margin-top: 32px;
+  animation: fadeUp .4s .55s ease both;
+}
+.agreement h3 {
+  font-family: 'Enriqueta', serif;
+  font-size: 20px;
+  color: var(--teal-dark);
+  margin-bottom: 12px;
+}
+.agreement p {
+  font-size: 14px;
+  color: #3A4A52;
+  line-height: 1.7;
+  margin-bottom: 10px;
+}
+.agreement .warning {
+  font-size: 13px;
+  color: var(--warm);
+  font-weight: 600;
+}
+
+/* ── FOOTER ── */
+.footer {
+  text-align: center;
+  padding: 32px 24px 48px;
+  border-top: 1px solid var(--border);
+  max-width: 740px;
+  margin: 0 auto;
+}
+.footer p { font-size: 13px; color: var(--grey); line-height: 1.8; }
+.footer a { color: var(--teal-dark); text-decoration: none; font-weight: 600; }
+.footer a:hover { text-decoration: underline; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 600px) {
+  .header { padding: 0 16px; }
+  .hero { padding: 48px 20px 40px; }
+  .content { padding: 32px 16px 60px; }
+  .lang-btn { padding: 6px 12px; font-size: 12px; }
+}
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="logo">Villa <span>Serenity</span></div>
+  <div class="lang-switcher">
+    <button class="lang-btn active" onclick="setLang('en',this)">EN</button>
+    <button class="lang-btn" onclick="setLang('fr',this)">FR</button>
+    <button class="lang-btn" onclick="setLang('es',this)">ES</button>
+    <button class="lang-btn" onclick="setLang('de',this)">DE</button>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="hero-badge" data-i18n="badge">Villa Serenity · Santa Susanna</div>
+  <h1 data-i18n="hero_title">House Standards & Safety Policy</h1>
+  <p data-i18n="hero_sub">Please read carefully before your arrival. By staying at the villa, you agree to comply with all rules below.</p>
+</div>
+
+<main class="content" id="sections-container">
+  <!-- Sections injected by JS -->
+</main>
+
+<div style="max-width:740px;margin:0 auto;padding:0 24px;">
+  <div class="agreement">
+    <h3 data-i18n="agree_title">Agreement</h3>
+    <p data-i18n="agree_body">By accessing the property, guests confirm that they have read, understood and agree to comply with this House Standards & Safety Policy, and are responsible for informing all accompanying persons.</p>
+    <p class="warning" data-i18n="agree_warn">Failure to comply may result in financial penalties, termination of the stay without refund, and partial or full retention of the security deposit.</p>
+  </div>
+</div>
+
+<footer class="footer">
+  <p data-i18n="footer_text">Questions? Contact us at <a href="mailto:villas@navamira.com">villas@navamira.com</a><br>© Navamira Villas · navamira.com</p>
+</footer>
+
+<script>
+// ── TRANSLATIONS ──────────────────────────────────────────────────
+const T = {
+  en: {
+    badge: "Villa Serenity · Santa Susanna",
+    hero_title: "House Standards & Safety Policy",
+    hero_sub: "Please read carefully before your arrival. By staying at the villa, you agree to comply with all rules below.",
+    agree_title: "Agreement",
+    agree_body: "By accessing the property, guests confirm that they have read, understood and agree to comply with this House Standards & Safety Policy, and are responsible for informing all accompanying persons.",
+    agree_warn: "Failure to comply may result in financial penalties, termination of the stay without refund, and partial or full retention of the security deposit.",
+    footer_text: 'Questions? Contact us at <a href="mailto:villas@navamira.com">villas@navamira.com</a><br>© Navamira Villas · navamira.com',
+    sections: [
+      { n:"1", title:"General Rules", body:`<p>The villa is for private tourist use only. Guests must respect public order, observe quiet hours, and behave considerately towards neighbours at all times. All use of the property must comply with these rules and the conditions of the reservation.</p>` },
+      { n:"2", title:"Property Security", body:`<p>Each guest is responsible for the security of their belongings. To prevent theft or damage, guests agree to:</p><ul><li class="check">Close windows, doors and blinds when leaving the property</li><li class="check">Not leave valuables in plain sight</li><li class="check">Immediately report any malfunction of locks, windows or blinds</li></ul><div class="note"><span class="note-icon">⚠️</span><span>The owner is not responsible for lost or stolen items if guests fail to secure the property properly.</span></div>` },
+      { n:"3", title:"Proper Use of the Property", body:`<p>Guests must treat the villa, furniture and equipment with care. Any damage caused must be compensated by the guest responsible.</p><div class="note"><span class="note-icon">⚠️</span><span>The owner is not liable for injuries resulting from negligence, misuse of equipment, or ignoring safety instructions.</span></div>` },
+      { n:"4", title:"Safety on the Premises", body:`<p>Guests must:</p><ul><li class="check">Use electrical and gas appliances responsibly</li><li class="check">Avoid leaving appliances running unattended</li><li class="check">Familiarise themselves with emergency switches and fire extinguishers</li><li class="check">Follow posted signs and safety notices</li></ul><p style="margin-top:10px;font-style:italic;">Ignoring safety instructions may result in injury for which the owner bears no responsibility.</p>` },
+      { n:"5", title:"Children", body:`<p>Children must be supervised at all times, especially near:</p><ul><li>The pool</li><li>Stairs, terraces and balconies</li><li>Elevated areas</li></ul><div class="note"><span class="note-icon">⚠️</span><span>Parents and guardians are fully responsible for incidents involving minors due to lack of supervision or disregard for safety rules.</span></div>` },
+      { n:"6", title:"Allergies & Medical Conditions", body:`<p>The villa may contain insects, pollen, dust, humidity and common cleaning chemicals typical for the region. Guests are responsible for managing their medical conditions and necessary medications.</p><div class="note"><span class="note-icon">⚠️</span><span>The owner is not liable for allergic reactions unless informed in advance.</span></div>` },
+      { n:"7", title:"Acceptance of Risks", body:`<p>By staying at the villa, guests accept inherent risks including:</p><ul><li>An unattended pool</li><li>Potential slips or falls</li><li>Weather conditions — wind, heat, rain</li><li>Insects or wildlife</li></ul><p style="margin-top:10px;font-style:italic;">Guests remain responsible for their personal safety at all times.</p>` },
+      { n:"8", title:"🚭  No Smoking Indoors", body:`<p>Smoking is strictly prohibited inside the villa, including:</p><ul><li>Cigarettes, cigars, pipes</li><li>Electronic cigarettes and vapes</li><li>IQOS and heated tobacco devices</li><li>Hookahs, shishas and prohibited substances</li></ul><p style="margin-top:10px;">Smoking is permitted outdoors only, away from doors and windows. Cigarette butts must be disposed of properly.</p><div class="note"><span class="note-icon">⚠️</span><span>Violations may result in deep-cleaning fees and/or termination of stay without refund.</span></div>` },
+      { n:"9", title:"🐶  Pets", body:`<p>Pets are allowed only with prior written permission from the host. If approved, guests must:</p><ul><li class="check">Supervise the pet at all times</li><li class="check">Clean up after it</li><li class="check">Pay for any damage caused by the animal</li></ul><div class="note"><span class="note-icon">⚠️</span><span>Unauthorised pets may result in immediate eviction and additional charges.</span></div>` },
+      { n:"10", title:"👥  Visitors & Non-Registered Persons", body:`<p>Only guests listed in the reservation and properly registered may be present on the property at any time. Visitors and third parties not included in the reservation are not permitted.</p><p>Any person remaining on the property overnight must be registered as a guest, in accordance with Real Decreto 933/2021.</p><div class="note"><span class="note-icon">⚠️</span><span>The presence of unauthorised or non-registered persons is considered a serious violation and may result in immediate termination of the stay without refund and/or further action in accordance with applicable regulations.</span></div>` },
+      { n:"11", title:"🎉  Parties & Events", body:`<p>Parties, events and gatherings of any kind are strictly prohibited — no exceptions. This includes birthdays, celebrations and group gatherings with non-registered guests.</p><div class="note"><span class="note-icon">⚠️</span><span>Violation will result in immediate termination of the stay without refund and may incur additional charges.</span></div>` },
+      { n:"12", title:"🎥  Security Cameras", body:`<p>The villa is equipped with outdoor-only security cameras:</p><ul><li><strong>Main entrance</strong> — operates 24/7</li><li><strong>Garden / pool access</strong> — operates 00:00–07:00 only</li></ul><p style="margin-top:10px;">There are no cameras indoors or in any private areas. Cameras do not monitor behaviour, leisure activities or pool use.</p><div class="note"><span class="note-icon">⚠️</span><span>Covering, moving, disconnecting or obstructing any camera — or attempting to disable Wi-Fi or power supply — will result in a €200 inspection fee, notification to the booking platform, and possible termination of stay without refund.</span></div><p style="margin-top:10px;">All cameras are clearly signposted and fully detailed in the CCTV Policy located inside the villa.</p>` },
+      { n:"13", title:"🔇  Noise, Music & Neighbour Respect", body:`<p>The villa is located in a quiet residential area. The following rules apply at all times:</p><div class="highlight">Quiet hours: 22:00 – 09:00 &nbsp;·&nbsp; Siesta: 14:00 – 16:00</div><p>During quiet hours, guests must:</p><ul><li>Avoid loud conversations outdoors</li><li>Avoid gatherings on terraces or in the garden</li><li>Avoid use of the swimming pool</li><li>Avoid any music or speakers outdoors</li></ul><p style="margin-top:10px;">Portable speakers and music are not permitted outdoors at any time of day.</p><div class="note"><span class="note-icon">⚠️</span><span>Repeated noise complaints may result in termination of the stay without refund.</span></div>` },
+      { n:"14", title:"🏊  Pool Behaviour", body:`<div class="highlight">Pool hours: 08:00 – 22:00</div><p>For safety and neighbour comfort:</p><ul><li>Jumping or diving into the pool is strictly prohibited</li><li>Loud games or shouting near the pool must be avoided</li><li>Children must be supervised by an adult at all times</li></ul>` },
+      { n:"15", title:"🏗️  Terraces & Balconies", body:`<p>Guests must use terraces and balconies responsibly. For safety reasons:</p><ul><li>Sitting or standing on railings is strictly prohibited</li><li>Climbing on terrace walls or structures is strictly prohibited</li></ul>` },
+      { n:"16", title:"📋  Guest Registration & Data Processing", body:`<p>In accordance with Spanish tourism and police regulations, all guests must complete mandatory identity registration before check-in. Personal data may be processed solely for:</p><ul><li class="check">Legally mandated reporting to authorities</li><li class="check">Calculation of tourist taxes</li><li class="check">Verifying authorised access to the property</li><li class="check">Resolving contractual issues related to occupancy</li></ul><p style="margin-top:10px;">Personal data is never used for profiling, marketing or behaviour monitoring.</p><p>Guests may exercise their GDPR rights by contacting: <strong>villas@navamira.com</strong></p>` },
+    ]
+  },
+  fr: {
+    badge: "Villa Serenity · Santa Susanna",
+    hero_title: "Règlement intérieur & Politique de sécurité",
+    hero_sub: "Merci de lire attentivement avant votre arrivée. En séjournant dans la villa, vous acceptez de respecter toutes les règles ci-dessous.",
+    agree_title: "Accord",
+    agree_body: "En accédant à la propriété, les hôtes confirment qu'ils ont lu, compris et accepté de se conformer au présent Règlement intérieur, et qu'ils sont responsables d'en informer toutes les personnes qui les accompagnent.",
+    agree_warn: "Le non-respect de ces règles peut entraîner des pénalités financières, la résiliation du séjour sans remboursement et la retenue partielle ou totale du dépôt de garantie.",
+    footer_text: 'Des questions ? Contactez-nous à <a href="mailto:villas@navamira.com">villas@navamira.com</a><br>© Navamira Villas · navamira.com',
+    sections: [
+      { n:"1", title:"Règles générales", body:`<p>La villa est réservée à un usage touristique privé uniquement. Les hôtes doivent respecter l'ordre public, les heures de silence et se comporter avec considération envers les voisins. Toute utilisation de la propriété doit être conforme à ces règles et aux conditions de la réservation.</p>` },
+      { n:"2", title:"Sécurité des biens", body:`<p>Chaque hôte est responsable de la sécurité de ses affaires. Pour prévenir le vol ou les dommages, les hôtes s'engagent à :</p><ul><li class="check">Fermer fenêtres, portes et volets en quittant la villa</li><li class="check">Ne pas laisser d'objets de valeur à la vue</li><li class="check">Signaler immédiatement tout dysfonctionnement des serrures, fenêtres ou volets</li></ul><div class="note"><span class="note-icon">⚠️</span><span>Le propriétaire n'est pas responsable des objets perdus ou volés si les hôtes n'ont pas correctement sécurisé la propriété.</span></div>` },
+      { n:"3", title:"Utilisation correcte de la propriété", body:`<p>Les hôtes doivent traiter la villa, les meubles et les équipements avec soin. Tout dommage causé doit être indemnisé par le responsable.</p><div class="note"><span class="note-icon">⚠️</span><span>Le propriétaire n'est pas responsable des blessures résultant d'une négligence, d'une mauvaise utilisation des équipements ou du non-respect des consignes de sécurité.</span></div>` },
+      { n:"4", title:"Sécurité dans la propriété", body:`<p>Les hôtes doivent :</p><ul><li class="check">Utiliser les appareils électriques et à gaz de manière responsable</li><li class="check">Éviter de laisser les appareils allumés sans surveillance</li><li class="check">Se familiariser avec les interrupteurs d'urgence et les extincteurs</li><li class="check">Respecter les panneaux et les consignes de sécurité affichés</li></ul>` },
+      { n:"5", title:"Enfants", body:`<p>Les enfants doivent être surveillés en permanence, notamment près :</p><ul><li>De la piscine</li><li>Des escaliers, terrasses et balcons</li><li>Des zones surélevées</li></ul><div class="note"><span class="note-icon">⚠️</span><span>Les parents et tuteurs sont entièrement responsables des incidents impliquant des mineurs dus à un manque de surveillance.</span></div>` },
+      { n:"6", title:"Allergies & Conditions médicales", body:`<p>La villa peut contenir des insectes, du pollen, de la poussière, de l'humidité et des produits ménagers courants. Les hôtes sont responsables de la gestion de leurs conditions médicales et de leurs médicaments.</p><div class="note"><span class="note-icon">⚠️</span><span>Le propriétaire n'est pas responsable des réactions allergiques sauf en cas d'information préalable.</span></div>` },
+      { n:"7", title:"Acceptation des risques", body:`<p>En séjournant dans la villa, les hôtes acceptent les risques inhérents, notamment :</p><ul><li>Une piscine non surveillée</li><li>Des risques de glissades ou de chutes</li><li>Les conditions météorologiques — vent, chaleur, pluie</li><li>Les insectes ou la faune sauvage</li></ul>` },
+      { n:"8", title:"🚭  Interdiction de fumer à l'intérieur", body:`<p>Il est strictement interdit de fumer à l'intérieur de la villa, y compris :</p><ul><li>Cigarettes, cigares, pipes</li><li>Cigarettes électroniques et vapoteuses</li><li>IQOS et appareils à tabac chauffé</li><li>Narguilés et substances prohibées</li></ul><p style="margin-top:10px;">La consommation de tabac est autorisée à l'extérieur uniquement, loin des portes et fenêtres.</p><div class="note"><span class="note-icon">⚠️</span><span>Les infractions peuvent entraîner des frais de nettoyage et/ou la résiliation du séjour sans remboursement.</span></div>` },
+      { n:"9", title:"🐶  Animaux de compagnie", body:`<p>Les animaux sont acceptés uniquement avec l'autorisation écrite préalable de l'hôte. Si approuvé, les hôtes doivent :</p><ul><li class="check">Surveiller l'animal en permanence</li><li class="check">Nettoyer après lui</li><li class="check">Payer pour tout dommage causé par l'animal</li></ul><div class="note"><span class="note-icon">⚠️</span><span>Les animaux non autorisés peuvent entraîner une expulsion immédiate et des frais supplémentaires.</span></div>` },
+      { n:"10", title:"👥  Visiteurs & Personnes non inscrites", body:`<p>Seuls les hôtes figurant dans la réservation et dûment enregistrés peuvent être présents sur la propriété à tout moment. Les visiteurs non inclus dans la réservation ne sont pas autorisés.</p><p>Toute personne passant la nuit sur la propriété doit être enregistrée conformément au Real Decreto 933/2021.</p><div class="note"><span class="note-icon">⚠️</span><span>La présence de personnes non autorisées est considérée comme une violation grave et peut entraîner la résiliation immédiate du séjour sans remboursement.</span></div>` },
+      { n:"11", title:"🎉  Fêtes & Événements", body:`<p>Toute fête, événement ou rassemblement est strictement interdit — sans exception. Cela inclut anniversaires, célébrations et réunions de groupe avec des personnes non enregistrées.</p><div class="note"><span class="note-icon">⚠️</span><span>La violation entraînera la résiliation immédiate du séjour sans remboursement et pourra entraîner des frais supplémentaires.</span></div>` },
+      { n:"12", title:"🎥  Caméras de sécurité", body:`<p>La villa est équipée de caméras extérieures uniquement :</p><ul><li><strong>Entrée principale</strong> — fonctionne 24h/24</li><li><strong>Jardin / accès piscine</strong> — fonctionne de 00h00 à 07h00 uniquement</li></ul><p style="margin-top:10px;">Aucune caméra à l'intérieur ni dans les espaces privés. Les caméras ne surveillent pas les activités de loisirs ni la piscine.</p><div class="note"><span class="note-icon">⚠️</span><span>Couvrir, déplacer, déconnecter ou obstruer une caméra entraînera des frais d'inspection de 200 €, une notification à la plateforme de réservation et éventuellement la résiliation du séjour.</span></div>` },
+      { n:"13", title:"🔇  Bruit, musique & respect du voisinage", body:`<p>La villa est située dans un quartier résidentiel calme. Les règles suivantes s'appliquent en tout temps :</p><div class="highlight">Heures de silence : 22h00 – 09h00 &nbsp;·&nbsp; Sieste : 14h00 – 16h00</div><p>Pendant les heures de silence, les hôtes doivent :</p><ul><li>Éviter les conversations bruyantes à l'extérieur</li><li>Éviter les rassemblements sur les terrasses ou dans le jardin</li><li>Éviter d'utiliser la piscine</li><li>Éviter toute musique ou enceinte à l'extérieur</li></ul><div class="note"><span class="note-icon">⚠️</span><span>Des plaintes répétées pour bruit peuvent entraîner la résiliation du séjour sans remboursement.</span></div>` },
+      { n:"14", title:"🏊  Comportement à la piscine", body:`<div class="highlight">Horaires de la piscine : 08h00 – 22h00</div><p>Pour la sécurité et le confort du voisinage :</p><ul><li>Sauter ou plonger dans la piscine est strictement interdit</li><li>Les jeux bruyants ou les cris près de la piscine sont à éviter</li><li>Les enfants doivent être surveillés par un adulte en permanence</li></ul>` },
+      { n:"15", title:"🏗️  Terrasses & Balcons", body:`<p>Les hôtes doivent utiliser les terrasses et balcons de manière responsable :</p><ul><li>S'asseoir ou se tenir debout sur les rambardes est strictement interdit</li><li>Grimper sur les murs de terrasse ou les structures est strictement interdit</li></ul>` },
+      { n:"16", title:"📋  Enregistrement & Traitement des données", body:`<p>Conformément à la réglementation espagnole, tous les hôtes doivent compléter l'enregistrement d'identité obligatoire avant l'arrivée. Les données personnelles sont traitées uniquement pour :</p><ul><li class="check">Le signalement légal aux autorités</li><li class="check">Le calcul des taxes touristiques</li><li class="check">La vérification de l'accès autorisé</li><li class="check">La résolution des questions contractuelles</li></ul><p style="margin-top:10px;">Contact RGPD : <strong>villas@navamira.com</strong></p>` },
+    ]
+  },
+  es: {
+    badge: "Villa Serenity · Santa Susanna",
+    hero_title: "Normas del hogar y Política de seguridad",
+    hero_sub: "Por favor, léalo atentamente antes de su llegada. Al hospedarse en la villa, acepta cumplir todas las normas que se indican a continuación.",
+    agree_title: "Acuerdo",
+    agree_body: "Al acceder a la propiedad, los huéspedes confirman que han leído, comprendido y aceptado cumplir esta Política de normas del hogar, y son responsables de informar a todas las personas que les acompañen.",
+    agree_warn: "El incumplimiento puede dar lugar a penalizaciones económicas, rescisión de la estancia sin reembolso y retención parcial o total del depósito de seguridad.",
+    footer_text: '¿Preguntas? Contáctenos en <a href="mailto:villas@navamira.com">villas@navamira.com</a><br>© Navamira Villas · navamira.com',
+    sections: [
+      { n:"1", title:"Normas generales", body:`<p>La villa es de uso turístico privado exclusivamente. Los huéspedes deben respetar el orden público, observar el horario de silencio y comportarse con consideración hacia los vecinos en todo momento.</p>` },
+      { n:"2", title:"Seguridad de los bienes", body:`<p>Cada huésped es responsable de la seguridad de sus pertenencias. Para prevenir robos o daños, los huéspedes se comprometen a:</p><ul><li class="check">Cerrar ventanas, puertas y persianas al salir de la propiedad</li><li class="check">No dejar objetos de valor a la vista</li><li class="check">Informar inmediatamente de cualquier mal funcionamiento de cerraduras, ventanas o persianas</li></ul><div class="note"><span class="note-icon">⚠️</span><span>El propietario no es responsable de los objetos perdidos o robados si los huéspedes no han asegurado correctamente la propiedad.</span></div>` },
+      { n:"3", title:"Uso correcto de la propiedad", body:`<p>Los huéspedes deben tratar la villa, el mobiliario y los equipos con cuidado. Cualquier daño causado deberá ser compensado por el huésped responsable.</p><div class="note"><span class="note-icon">⚠️</span><span>El propietario no es responsable de las lesiones derivadas de negligencia, uso indebido de equipos o incumplimiento de las instrucciones de seguridad.</span></div>` },
+      { n:"4", title:"Seguridad en las instalaciones", body:`<p>Los huéspedes deben:</p><ul><li class="check">Utilizar los aparatos eléctricos y de gas de forma responsable</li><li class="check">Evitar dejar aparatos en funcionamiento sin vigilancia</li><li class="check">Familiarizarse con los interruptores de emergencia y los extintores</li><li class="check">Seguir los carteles e instrucciones de seguridad publicados</li></ul>` },
+      { n:"5", title:"Niños", body:`<p>Los niños deben estar supervisados en todo momento, especialmente cerca de:</p><ul><li>La piscina</li><li>Escaleras, terrazas y balcones</li><li>Zonas elevadas</li></ul><div class="note"><span class="note-icon">⚠️</span><span>Los padres y tutores son completamente responsables de los incidentes que involucren a menores por falta de supervisión.</span></div>` },
+      { n:"6", title:"Alergias y condiciones médicas", body:`<p>La villa puede contener insectos, polen, polvo, humedad y productos de limpieza habituales en la región. Los huéspedes son responsables de gestionar sus condiciones médicas y medicamentos necesarios.</p><div class="note"><span class="note-icon">⚠️</span><span>El propietario no es responsable de las reacciones alérgicas salvo que haya sido informado con antelación.</span></div>` },
+      { n:"7", title:"Aceptación de riesgos", body:`<p>Al hospedarse en la villa, los huéspedes aceptan los riesgos inherentes, entre ellos:</p><ul><li>Una piscina sin vigilancia</li><li>Posibles resbalones o caídas</li><li>Condiciones meteorológicas — viento, calor, lluvia</li><li>Insectos o fauna salvaje</li></ul>` },
+      { n:"8", title:"🚭  Prohibido fumar en el interior", body:`<p>Está estrictamente prohibido fumar dentro de la villa, incluyendo:</p><ul><li>Cigarrillos, puros, pipas</li><li>Cigarrillos electrónicos y vapeadores</li><li>IQOS y dispositivos de tabaco calentado</li><li>Narguiles y sustancias prohibidas</li></ul><p style="margin-top:10px;">Solo se permite fumar en el exterior, lejos de puertas y ventanas.</p><div class="note"><span class="note-icon">⚠️</span><span>Las infracciones pueden conllevar gastos de limpieza y/o rescisión de la estancia sin reembolso.</span></div>` },
+      { n:"9", title:"🐶  Mascotas", body:`<p>Las mascotas solo están permitidas con autorización escrita previa del anfitrión. Si se aprueba, los huéspedes deben:</p><ul><li class="check">Supervisar a la mascota en todo momento</li><li class="check">Recoger sus excrementos</li><li class="check">Pagar por cualquier daño causado por el animal</li></ul><div class="note"><span class="note-icon">⚠️</span><span>Las mascotas no autorizadas pueden resultar en expulsión inmediata y cargos adicionales.</span></div>` },
+      { n:"10", title:"👥  Visitantes y personas no registradas", body:`<p>Solo los huéspedes incluidos en la reserva y debidamente registrados pueden estar presentes en la propiedad en cualquier momento. Los visitantes no incluidos en la reserva no están permitidos.</p><p>Cualquier persona que permanezca en la propiedad durante la noche debe estar registrada como huésped, de conformidad con el Real Decreto 933/2021.</p><div class="note"><span class="note-icon">⚠️</span><span>La presencia de personas no autorizadas se considera una infracción grave y puede dar lugar a la rescisión inmediata de la estancia sin reembolso.</span></div>` },
+      { n:"11", title:"🎉  Fiestas y eventos", body:`<p>Las fiestas, eventos y reuniones de cualquier tipo están estrictamente prohibidos, sin excepciones. Esto incluye cumpleaños, celebraciones y reuniones de grupo con huéspedes no registrados.</p><div class="note"><span class="note-icon">⚠️</span><span>La infracción dará lugar a la rescisión inmediata de la estancia sin reembolso y podrá conllevar cargos adicionales.</span></div>` },
+      { n:"12", title:"🎥  Cámaras de seguridad", body:`<p>La villa está equipada con cámaras de seguridad solo en el exterior:</p><ul><li><strong>Entrada principal</strong> — funciona 24/7</li><li><strong>Jardín / acceso a la piscina</strong> — funciona solo de 00:00 a 07:00</li></ul><p style="margin-top:10px;">No hay cámaras en el interior ni en zonas privadas. Las cámaras no monitorizan actividades de ocio ni el uso de la piscina.</p><div class="note"><span class="note-icon">⚠️</span><span>Cubrir, mover, desconectar u obstruir cualquier cámara resultará en una tarifa de inspección de 200 €, notificación a la plataforma de reservas y posible rescisión de la estancia.</span></div>` },
+      { n:"13", title:"🔇  Ruido, música y respeto al vecindario", body:`<p>La villa está ubicada en una zona residencial tranquila. Las siguientes normas se aplican en todo momento:</p><div class="highlight">Horario de silencio: 22:00 – 09:00 &nbsp;·&nbsp; Siesta: 14:00 – 16:00</div><p>Durante el horario de silencio, los huéspedes deben:</p><ul><li>Evitar conversaciones ruidosas en el exterior</li><li>Evitar reuniones en terrazas o en el jardín</li><li>Evitar el uso de la piscina</li><li>Evitar cualquier música o altavoz en el exterior</li></ul><div class="note"><span class="note-icon">⚠️</span><span>Las quejas repetidas por ruido pueden dar lugar a la rescisión de la estancia sin reembolso.</span></div>` },
+      { n:"14", title:"🏊  Comportamiento en la piscina", body:`<div class="highlight">Horario de la piscina: 08:00 – 22:00</div><p>Por seguridad y comodidad de los vecinos:</p><ul><li>Está estrictamente prohibido saltar o tirarse de cabeza a la piscina</li><li>Deben evitarse los juegos ruidosos o los gritos cerca de la piscina</li><li>Los niños deben estar supervisados por un adulto en todo momento</li></ul>` },
+      { n:"15", title:"🏗️  Terrazas y balcones", body:`<p>Los huéspedes deben utilizar las terrazas y balcones de forma responsable:</p><ul><li>Está estrictamente prohibido sentarse o ponerse de pie sobre las barandillas</li><li>Está estrictamente prohibido trepar por las paredes de la terraza o las estructuras</li></ul>` },
+      { n:"16", title:"📋  Registro de huéspedes y tratamiento de datos", body:`<p>De conformidad con la normativa española de turismo y policía, todos los huéspedes deben completar el registro de identidad obligatorio antes del check-in. Los datos personales se procesan únicamente para:</p><ul><li class="check">La comunicación legalmente obligatoria a las autoridades</li><li class="check">El cálculo de las tasas turísticas</li><li class="check">La verificación del acceso autorizado a la propiedad</li><li class="check">La resolución de cuestiones contractuales relacionadas con la ocupación</li></ul><p style="margin-top:10px;">Contacto RGPD: <strong>villas@navamira.com</strong></p>` },
+    ]
+  },
+  de: {
+    badge: "Villa Serenity · Santa Susanna",
+    hero_title: "Hausordnung & Sicherheitsrichtlinie",
+    hero_sub: "Bitte sorgfältig vor Ihrer Ankunft lesen. Mit dem Aufenthalt in der Villa erklären Sie sich mit allen unten aufgeführten Regeln einverstanden.",
+    agree_title: "Einverständnis",
+    agree_body: "Durch den Zugang zum Anwesen bestätigen die Gäste, dass sie diese Hausordnung gelesen, verstanden und akzeptiert haben, und sind dafür verantwortlich, alle Begleitpersonen zu informieren.",
+    agree_warn: "Bei Nichteinhaltung können finanzielle Strafen, Beendigung des Aufenthalts ohne Rückerstattung sowie teilweise oder vollständige Einbehaltung der Kaution folgen.",
+    footer_text: 'Fragen? Kontaktieren Sie uns unter <a href="mailto:villas@navamira.com">villas@navamira.com</a><br>© Navamira Villas · navamira.com',
+    sections: [
+      { n:"1", title:"Allgemeine Regeln", body:`<p>Die Villa ist ausschließlich für private touristische Zwecke bestimmt. Die Gäste müssen die öffentliche Ordnung einhalten, Ruhezeiten beachten und gegenüber den Nachbarn rücksichtsvoll sein.</p>` },
+      { n:"2", title:"Sicherheit des Eigentums", body:`<p>Jeder Gast ist für die Sicherheit seines Eigentums verantwortlich. Zur Vermeidung von Diebstahl oder Schäden verpflichten sich die Gäste:</p><ul><li class="check">Fenster, Türen und Rollläden beim Verlassen zu schließen</li><li class="check">Keine Wertsachen sichtbar liegen zu lassen</li><li class="check">Funktionsstörungen von Schlössern, Fenstern oder Rollläden sofort zu melden</li></ul><div class="note"><span class="note-icon">⚠️</span><span>Der Eigentümer haftet nicht für verlorene oder gestohlene Gegenstände, wenn Gäste die Unterkunft nicht ordnungsgemäß gesichert haben.</span></div>` },
+      { n:"3", title:"Ordnungsgemäße Nutzung der Unterkunft", body:`<p>Gäste müssen mit der Villa, den Möbeln und Geräten sorgfältig umgehen. Entstandene Schäden müssen vom verantwortlichen Gast ersetzt werden.</p><div class="note"><span class="note-icon">⚠️</span><span>Der Eigentümer haftet nicht für Verletzungen durch Fahrlässigkeit, unsachgemäße Nutzung oder Missachtung von Sicherheitshinweisen.</span></div>` },
+      { n:"4", title:"Sicherheit auf dem Gelände", body:`<p>Die Gäste müssen:</p><ul><li class="check">Elektrische Geräte und Gasgeräte verantwortungsvoll nutzen</li><li class="check">Geräte nicht unbeaufsichtigt laufen lassen</li><li class="check">Sich mit Notschaltern und Feuerlöschern vertraut machen</li><li class="check">Aufgestellte Schilder und Sicherheitshinweise befolgen</li></ul>` },
+      { n:"5", title:"Kinder", body:`<p>Kinder müssen jederzeit beaufsichtigt werden, insbesondere in der Nähe von:</p><ul><li>Dem Pool</li><li>Treppen, Terrassen und Balkonen</li><li>Erhöhten Bereichen</li></ul><div class="note"><span class="note-icon">⚠️</span><span>Eltern und Erziehungsberechtigte sind vollständig verantwortlich für Vorfälle mit Minderjährigen aufgrund mangelnder Aufsicht.</span></div>` },
+      { n:"6", title:"Allergien & Erkrankungen", body:`<p>Die Villa kann Insekten, Pollen, Staub, Feuchtigkeit und übliche Reinigungsmittel enthalten. Gäste sind für das Management ihrer Erkrankungen und Medikamente selbst verantwortlich.</p><div class="note"><span class="note-icon">⚠️</span><span>Der Eigentümer haftet nicht für allergische Reaktionen, sofern er nicht im Voraus informiert wurde.</span></div>` },
+      { n:"7", title:"Risikoakzeptanz", body:`<p>Mit dem Aufenthalt in der Villa akzeptieren die Gäste folgende inhärente Risiken:</p><ul><li>Ein unbeaufsichtigter Pool</li><li>Mögliche Ausrutscher oder Stürze</li><li>Wetterbedingungen — Wind, Hitze, Regen</li><li>Insekten oder Wildtiere</li></ul>` },
+      { n:"8", title:"🚭  Rauchverbot im Innenbereich", body:`<p>Das Rauchen ist im Inneren der Villa streng verboten, einschließlich:</p><ul><li>Zigaretten, Zigarren, Pfeifen</li><li>E-Zigaretten und Vapes</li><li>IQOS und Tabakerhitzer</li><li>Wasserpfeifen und verbotene Substanzen</li></ul><p style="margin-top:10px;">Rauchen ist nur im Freien erlaubt, fern von Türen und Fenstern.</p><div class="note"><span class="note-icon">⚠️</span><span>Verstöße können zu Reinigungsgebühren und/oder Beendigung des Aufenthalts ohne Rückerstattung führen.</span></div>` },
+      { n:"9", title:"🐶  Haustiere", body:`<p>Haustiere sind nur mit schriftlicher Genehmigung des Gastgebers erlaubt. Bei Genehmigung müssen die Gäste:</p><ul><li class="check">Das Tier jederzeit beaufsichtigen</li><li class="check">Hinterlassenschaften des Tieres beseitigen</li><li class="check">Für alle vom Tier verursachten Schäden aufkommen</li></ul><div class="note"><span class="note-icon">⚠️</span><span>Nicht genehmigte Haustiere können zur sofortigen Ausweisung und zusätzlichen Gebühren führen.</span></div>` },
+      { n:"10", title:"👥  Besucher & Nicht registrierte Personen", body:`<p>Nur im Reservierungssystem eingetragene und ordnungsgemäß registrierte Gäste dürfen sich jederzeit auf dem Anwesen aufhalten. Besucher, die nicht in der Buchung enthalten sind, sind nicht gestattet.</p><p>Jede Person, die das Anwesen über Nacht nutzt, muss gemäß Real Decreto 933/2021 als Gast registriert sein.</p><div class="note"><span class="note-icon">⚠️</span><span>Das Vorhandensein nicht autorisierter Personen gilt als schwerwiegender Verstoß und kann zur sofortigen Beendigung des Aufenthalts ohne Rückerstattung führen.</span></div>` },
+      { n:"11", title:"🎉  Partys & Veranstaltungen", body:`<p>Partys, Veranstaltungen und Zusammenkünfte jeglicher Art sind streng verboten — ausnahmslos. Dies gilt auch für Geburtstagsfeiern und Gruppenveranstaltungen mit nicht registrierten Gästen.</p><div class="note"><span class="note-icon">⚠️</span><span>Verstöße führen zur sofortigen Beendigung des Aufenthalts ohne Rückerstattung und können zusätzliche Gebühren nach sich ziehen.</span></div>` },
+      { n:"12", title:"🎥  Sicherheitskameras", body:`<p>Die Villa ist mit Außenkameras ausgestattet:</p><ul><li><strong>Haupteingang</strong> — 24/7 in Betrieb</li><li><strong>Garten / Poolzugang</strong> — nur von 00:00 bis 07:00 Uhr in Betrieb</li></ul><p style="margin-top:10px;">Keine Kameras im Innenbereich oder in privaten Bereichen. Kameras überwachen keine Freizeitaktivitäten und keinen Poolbereich.</p><div class="note"><span class="note-icon">⚠️</span><span>Das Abdecken, Verschieben, Trennen oder Verdecken einer Kamera führt zu einer Inspektionsgebühr von 200 €, einer Meldung an die Buchungsplattform und ggf. Beendigung des Aufenthalts.</span></div>` },
+      { n:"13", title:"🔇  Lärm, Musik & Rücksicht auf Nachbarn", body:`<p>Die Villa befindet sich in einem ruhigen Wohngebiet. Folgende Regeln gelten jederzeit:</p><div class="highlight">Ruhezeiten: 22:00 – 09:00 Uhr &nbsp;·&nbsp; Mittagsruhe: 14:00 – 16:00 Uhr</div><p>Während der Ruhezeiten müssen Gäste:</p><ul><li>Laute Gespräche draußen vermeiden</li><li>Versammlungen auf Terrassen oder im Garten vermeiden</li><li>Den Pool nicht nutzen</li><li>Jede Musik und Lautsprecher im Freien vermeiden</li></ul><div class="note"><span class="note-icon">⚠️</span><span>Wiederholte Lärmbelästigungsbeschwerden können zur Beendigung des Aufenthalts ohne Rückerstattung führen.</span></div>` },
+      { n:"14", title:"🏊  Verhalten am Pool", body:`<div class="highlight">Poolzeiten: 08:00 – 22:00 Uhr</div><p>Aus Sicherheitsgründen und zum Schutz der Nachbarn:</p><ul><li>Springen oder Tauchen in den Pool ist streng verboten</li><li>Laute Spiele oder Schreien in Poolnähe sind zu vermeiden</li><li>Kinder müssen jederzeit von einem Erwachsenen beaufsichtigt werden</li></ul>` },
+      { n:"15", title:"🏗️  Terrassen & Balkone", body:`<p>Gäste müssen Terrassen und Balkone verantwortungsvoll nutzen:</p><ul><li>Das Sitzen oder Stehen auf Geländern ist streng verboten</li><li>Das Klettern auf Terrassenmauern oder Strukturen ist streng verboten</li></ul>` },
+      { n:"16", title:"📋  Gästeregistrierung & Datenverarbeitung", body:`<p>Gemäß spanischen Tourismus- und Polizeivorschriften müssen alle Gäste vor dem Check-in eine obligatorische Identitätsregistrierung ausfüllen. Personenbezogene Daten werden ausschließlich verarbeitet für:</p><ul><li class="check">Gesetzlich vorgeschriebene Meldungen an Behörden</li><li class="check">Berechnung der Tourismussteuern</li><li class="check">Überprüfung des berechtigten Zugangs</li><li class="check">Lösung vertraglicher Fragen zur Belegung</li></ul><p style="margin-top:10px;">DSGVO-Kontakt: <strong>villas@navamira.com</strong></p>` },
+    ]
+  }
+};
+
+// ── RENDER ────────────────────────────────────────────────────────
+let currentLang = 'en';
+
+function render(lang) {
+  currentLang = lang;
+  const t = T[lang];
+
+  // Static i18n
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (t[key] !== undefined) el.innerHTML = t[key];
+  });
+
+  // Sections
+  const container = document.getElementById('sections-container');
+  container.innerHTML = '';
+  t.sections.forEach((sec, i) => {
+    const card = document.createElement('div');
+    card.className = 'section-card';
+    card.innerHTML = `
+      <div class="section-header" onclick="toggleCard(this)">
+        <div class="section-num">${sec.n}</div>
+        <div class="section-title">${sec.title}</div>
+        <div class="section-chevron">▼</div>
+      </div>
+      <div class="section-body">${sec.body}</div>
+    `;
+    container.appendChild(card);
+  });
+
+  // Open first card by default
+  const first = container.querySelector('.section-card');
+  if (first) first.classList.add('open');
+}
+
+function toggleCard(header) {
+  const card = header.parentElement;
+  card.classList.toggle('open');
+}
+
+function setLang(lang, btn) {
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  render(lang);
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// Init
+render('en');
+</script>
+</body>
+</html>
