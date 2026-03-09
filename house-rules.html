@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>House Standards & Safety Policy — Villa Miramar</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Enriqueta:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --teal-dark:  #2d6b72;
+    --teal:       #3a8a93;
+    --teal-light: #5aa7b0;
+    --teal-pale:  #eaf4f5;
+    --teal-bg:    #f2f7f8;
+    --text:       #2c3e45;
+    --text-muted: #6b8890;
+    --white:      #ffffff;
+    --card-shadow: 0 2px 12px rgba(45,107,114,0.10);
+    --card-shadow-hover: 0 6px 24px rgba(45,107,114,0.18);
+    --radius: 12px;
+    --amber: #c8860a;
+    --red:   #c0392b;
+    --green: #1d7a4a;
+  }
+  body { font-family: 'Enriqueta', serif; background: var(--teal-bg); color: var(--text); min-height: 100vh; }
+  .hero {
+    background: linear-gradient(135deg, var(--teal-dark) 0%, var(--teal) 50%, #4a9fa8 100%);
+    position: relative; overflow: hidden; padding: 64px 24px 56px; text-align: center;
+  }
+  .hero::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(ellipse 60% 80% at 80% 20%, rgba(255,255,255,0.08) 0%, transparent 60%),
+                radial-gradient(ellipse 40% 60% at 10% 80%, rgba(0,0,0,0.12) 0%, transparent 60%);
+  }
+  .hero-brand { font-family: 'Enriqueta', serif; font-weight: 400; font-size: 13px; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,0.7); margin-bottom: 8px; position: relative; }
+  .hero-villa { font-family: 'Playfair Display', serif; font-size: clamp(20px,3.5vw,32px); font-weight: 400; color: rgba(255,255,255,0.95); position: relative; margin-bottom: 10px; letter-spacing: 1px; }
+  .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(22px,4vw,40px); font-weight: 600; color: #fff; position: relative; margin-bottom: 16px; line-height: 1.2; }
+  .hero p { font-size: 15px; color: rgba(255,255,255,0.82); font-style: italic; max-width: 480px; margin: 0 auto; line-height: 1.6; position: relative; }
+  .lang-bar { position: absolute; top: 20px; right: 24px; display: flex; gap: 6px; }
+  .lang-btn { font-family: 'Enriqueta', serif; font-size: 12px; font-weight: 600; letter-spacing: 1px; padding: 5px 11px; border-radius: 20px; border: 1.5px solid rgba(255,255,255,0.35); background: transparent; color: rgba(255,255,255,0.75); cursor: pointer; transition: all .2s; }
+  .lang-btn.active, .lang-btn:hover { background: rgba(255,255,255,0.22); color: #fff; border-color: rgba(255,255,255,0.7); }
+  main { max-width: 760px; margin: 0 auto; padding: 40px 16px 80px; display: flex; flex-direction: column; gap: 10px; }
+  .card { background: var(--white); border-radius: var(--radius); box-shadow: var(--card-shadow); overflow: hidden; transition: box-shadow .25s; }
+  .card:hover { box-shadow: var(--card-shadow-hover); }
+  .card-header { display: flex; align-items: center; justify-content: space-between; padding: 16px 22px; cursor: pointer; user-select: none; gap: 14px; }
+  .card-header-left { display: flex; align-items: center; gap: 14px; }
+  .icon-wrap { width: 42px; height: 42px; border-radius: 10px; background: var(--teal-pale); display: flex; align-items: center; justify-content: center; flex-shrink: 0; padding: 7px; }
+  .icon-wrap img { width: 26px; height: 26px; object-fit: contain; }
+  .card-title { font-family: 'Enriqueta', serif; font-size: 15px; font-weight: 600; color: var(--text); }
+  .chevron { color: var(--teal-light); font-size: 10px; transition: transform .25s; flex-shrink: 0; }
+  .card.open .chevron { transform: rotate(180deg); }
+  .card-body { display: none; padding: 4px 22px 20px 22px; border-top: 1px solid var(--teal-pale); }
+  .card.open .card-body { display: block; }
+  .card-body p, .card-body li { font-family: 'Enriqueta', serif; font-size: 14px; line-height: 1.7; color: #3d5257; }
+  .card-body p { margin-top: 14px; }
+  .card-body ul { list-style: none; margin-top: 10px; }
+  .card-body ul li { padding: 3px 0 3px 24px; position: relative; }
+  .card-body ul li::before { position: absolute; left: 5px; }
+  .card-body ul.bullets li::before { content: '•'; color: var(--teal-light); }
+  .card-body ul.checks li::before { content: '✔'; color: var(--green); font-size: 12px; top: 5px; }
+  .card-body ul.crosses li::before { content: '✖'; color: var(--red); font-size: 12px; top: 5px; }
+  .note { margin-top: 12px; padding: 10px 14px; border-radius: 8px; font-family: 'Enriqueta', serif; font-size: 13px; line-height: 1.6; }
+  .note-amber { background: #fffbf0; border-left: 3px solid #c8860a; color: #7b5500; }
+  .note-red   { background: #fff5f5; border-left: 3px solid #c0392b; color: #8b2020; }
+  .note-blue  { background: var(--teal-pale); border-left: 3px solid var(--teal); color: var(--teal-dark); font-weight: 600; }
+  .section-label { font-family: 'Enriqueta', serif; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: var(--teal); margin-top: 16px; margin-bottom: 4px; }
+  .time-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 14px; }
+  .time-cell { background: var(--teal-pale); border-radius: 8px; padding: 12px 14px; text-align: center; }
+  .time-cell .label { font-family: 'Enriqueta', serif; font-size: 12px; color: var(--text-muted); margin-bottom: 4px; }
+  .time-cell .value { font-family: 'Enriqueta', serif; font-size: 17px; font-weight: 600; color: var(--teal-dark); }
+  .card-agree { border: 2px solid var(--teal-light) !important; }
+  .card-agree .icon-wrap { background: var(--teal); }
+  .card-agree .icon-wrap img { filter: brightness(0) invert(1); }
+  footer { text-align: center; padding: 32px 16px 48px; font-family: 'Enriqueta', serif; font-size: 13px; color: var(--text-muted); }
+  footer a { color: var(--teal); text-decoration: none; }
+  [data-lang] { display: none; }
+  [data-lang="en"] { display: block; }
+  .card-body [data-lang="en"] { display: block; }
+  .card-body p[data-lang], .card-body ul[data-lang], .card-body div[data-lang] { display: none; }
+  .card-body p[data-lang="en"], .card-body ul[data-lang="en"], .card-body div[data-lang="en"] { display: block; }
+  .card-body ul[data-lang="en"] { display: block; }
+  @media (max-width: 480px) {
+    .time-grid { grid-template-columns: 1fr; }
+    .lang-bar { top: 14px; right: 12px; }
+    .icon-wrap { width: 36px; height: 36px; }
+    .icon-wrap img { width: 22px; height: 22px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="lang-bar">
+    <button class="lang-btn active" onclick="setLang('en')">EN</button>
+    <button class="lang-btn" onclick="setLang('fr')">FR</button>
+    <button class="lang-btn" onclick="setLang('es')">ES</button>
+    <button class="lang-btn" onclick="setLang('de')">DE</button>
+  </div>
+  <div class="hero-brand">Navamira Villas · Santa Susanna · Catalonia</div>
+  <div class="hero-villa">Villa Miramar</div>
+  <h1>
+    <span data-lang="en">House Standards &amp; Safety Policy</span>
+    <span data-lang="fr">Règlement Intérieur &amp; Sécurité</span>
+    <span data-lang="es">Normas de la Casa &amp; Seguridad</span>
+    <span data-lang="de">Hausordnung &amp; Sicherheitsrichtlinien</span>
+  </h1>
+  <p>
+    <span data-lang="en">Please read carefully before your arrival. By staying at the villa, you agree to comply with all rules below.</span>
+    <span data-lang="fr">Veuillez lire attentivement avant votre arrivée. En séjournant dans la villa, vous acceptez de respecter toutes les règles ci-dessous.</span>
+    <span data-lang="es">Por favor, léalo atentamente antes de su llegada. Al alojarse en la villa, acepta cumplir todas las normas siguientes.</span>
+    <span data-lang="de">Bitte lesen Sie dies sorgfältig vor Ihrer Ankunft. Durch den Aufenthalt erklären Sie sich mit allen Regeln einverstanden.</span>
+  </p>
+</header>
+
+<main>
+
+  <!-- 1. General Rules -->
+  <div class="card open">
+    <div class="card-header" onclick="toggle(this)">
+      <div class="card-header-left">
+        <div class="icon-wrap"><img src="data:image/png;base64,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" alt=""></div>
+        <span class="card-title">1. General Rules</span>
+      </div><span class="chevron">▲</span>
+    </div>
+    <div class="card-body">
+      <p data-lang="en">The villa is for private tourist use. Guests must respect public order, observe quiet hours, and behave considerately towards neighbours at all times. All use of the property must comply with these rules and the conditions of the reservation.</p>
+      <p data-lang="fr">La villa est réservée à un usage touristique privé. Les clients doivent respecter l'ordre public, les heures de silence et se comporter de manière respectueuse envers les voisins.</p>
+      <p data-lang="es">La villa es de uso turístico privado. Los huéspedes deben respetar el orden público, los horarios de silencio y comportarse consideradamente con los vecinos en todo momento.</p>
+      <p data-lang="de">Die Villa ist ausschließlich für privaten Touristengebrauch. Gäste müssen die öffentliche Ordnung respektieren, Ruhezeiten einhalten und rücksichtsvoll gegenüber Nachbarn sein.</p>
+    </div>
+  </div>
+
+  <!-- 2. Property Security -->
+  <div class="card">
+    <div class="card-header" onclick="toggle(this)">
+      <div class="card-header-left">
+        <div class="icon-wrap"><img src="data:image/png;base64,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" alt=""></div>
+        <span class="card-title">2. Property Security</span>
+      </div><span class="chevron">▲</span>
+    </div>
+    <div class="card-body">
+      <p data-lang="en">Each guest is responsible for the security of their belongings. To prevent theft or damage, guests agree to:</p>
+      <ul class="checks" data-lang="en">
+        <li>Close windows, doors, and blinds when leaving</li>
+        <li>Not leave valuables in plain sight</li>
+        <li>Immediately report any malfunction of locks, windows, or blinds</li>
+      </ul>
+      <p data-lang="fr">Chaque client est responsable de la sécurité de ses affaires :</p>
+      <ul class="checks" data-lang="fr">
+        <li>Fermer fenêtres, portes et volets en quittant la villa</li>
+        <li>Ne pas laisser d'objets de valeur en évidence</li>
+        <li>Signaler immédiatement tout dysfonctionnement des serrures ou fenêtres</li>
+      </ul>
+      <p data-lang="es">Cada huésped es responsable de la seguridad de sus pertenencias:</p>
+      <ul class="checks" data-lang="es">
+        <li>Cerrar ventanas, puertas y persianas al salir</li>
+        <li>No dejar objetos de valor a la vista</li>
+        <li>Informar de inmediato de cualquier fallo en cerraduras o ventanas</li>
+      </ul>
+      <p data-lang="de">Jeder Gast ist für seine eigenen Sachen verantwortlich:</p>
+      <ul class="checks" data-lang="de">
+        <li>Fenster, Türen und Jalousien beim Verlassen schließen</li>
+        <li>Keine Wertsachen sichtbar liegen lassen</li>
+        <li>Defekte sofort melden</li>
+      </ul>
+      <div class="note note-amber" data-lang="en">📌 The owner is not responsible for lost or stolen items if guests fail to secure the property properly.</div>
+      <div class="note note-amber" data-lang="fr">📌 Le propriétaire n'est pas responsable des objets perdus ou volés si les clients n'ont pas sécurisé la propriété.</div>
+      <div class="note note-amber" data-lang="es">📌 El propietario no es responsable de objetos perdidos o robados si los huéspedes no aseguran la propiedad.</div>
+      <div class="note note-amber" data-lang="de">📌 Der Eigentümer haftet nicht für verlorene oder gestohlene Gegenstände bei unsachgemäßer Sicherung.</div>
+    </div>
+  </div>
+
+  <!-- 3. Proper Use -->
+  <div class="card">
+    <div class="card-header" onclick="toggle(this)">
+      <div class="card-header-left">
+        <div class="icon-wrap"><img src="data:image/png;base64,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" alt=""></div>
+        <span class="card-title">3. Proper Use of the Property</span>
+      </div><span class="chevron">▲</span>
+    </div>
+    <div class="card-body">
+      <p data-lang="en">Guests must treat the villa, furniture, and equipment with care. Any damage caused must be compensated by the guest responsible.</p>
+      <p data-lang="en">We kindly ask that any furniture or items moved during your stay are returned to their original position before check-out.</p>
+      <p data-lang="fr">Les clients doivent traiter la villa avec soin. Tout dommage causé doit être compensé.</p>
+      <p data-lang="fr">Nous vous demandons de bien vouloir remettre tout mobilier déplacé à sa place d'origine avant le départ.</p>
+      <p data-lang="es">Los huéspedes deben tratar la villa con cuidado. Cualquier daño causado deberá ser compensado.</p>
+      <p data-lang="es">Le pedimos amablemente que cualquier mueble movido durante su estancia sea devuelto a su posición original antes del check-out.</p>
+      <p data-lang="de">Gäste müssen die Villa sorgfältig behandeln. Verursachte Schäden sind zu ersetzen.</p>
+      <p data-lang="de">Wir bitten darum, alle während des Aufenthalts verschobenen Möbel vor der Abreise wieder an ihren ursprünglichen Platz zu stellen.</p>
+      <div class="note note-amber" data-lang="en">📌 The owner is not liable for injuries resulting from negligence, misuse of equipment, or ignoring safety instructions.</div>
+      <div class="note note-amber" data-lang="fr">📌 Le propriétaire n'est pas responsable des blessures résultant de négligence ou d'une mauvaise utilisation.</div>
+      <div class="note note-amber" data-lang="es">📌 El propietario no es responsable de lesiones por negligencia o uso indebido del equipamiento.</div>
+      <div class="note note-amber" data-lang="de">📌 Der Eigentümer haftet nicht für Verletzungen durch Fahrlässigkeit oder Fehlanwendung.</div>
+    </div>
+  </div>
+
+  <!-- 4. Safety -->
+  <div class="card">
+    <div class="card-header" onclick="toggle(this)">
+      <div class="card-header-left">
+        <div class="icon-wrap"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAACXBIWXMAAAsTAAALEwEAmpwYAAAFc0lEQVR4nO2cTYgcRRiGS8EfFL0oSPwBxYN68KIHRRBRFFaymapWol5EQRINEYIXPU7c+WrW1YsBPawI6s73zaIXD5qIB8FLYtBERQQRETERFDFgkj2sRnel3F3drhndnZnqeau6+4E6Zafn6ffd/knXdikFRpPcry2fMFaWkUOTHDfE96qqo4l/RJdh/hl8TFUdfAmSG6rqoAswqReyvfnWuYbkSUN82JAspB6ICV0qyYK28lFmebfLqlD5xkz3ckP8aZl+Q02B+6KtHM2os6XAI6PYMkzJClk9Yo7snJ09J7y4O00VLW9LWMjK2BVe3F0zcocjv7uVXr9i5O1GVogakey5zpWGeH8uK+JDKjTa8un1X+K+OMR2y1aIQ7fmr/JOW6dUaIoKroyFjGW/khUv635t9AVVv6irDbZbuPi4dqxo6kLqQsJQFyJpFzLsdg14oPPYNHUhFSnk75m6CIowA05QlbYQN23qgoihjKzdnUDnoZIRiAx4HnCByIDnAReIDHgecIHIgOcBF4gMeB5wgciA5wEXiAx4HnCByIDnAReIDHgecIHIgOcBF4gMeB5wgciA5wEXiAx4HnCByIDnAReIDHgecIHIgOcBF4gMeB5wgaJYXj5LW9k76N8qw/OACxSEsbzD+WriX7Xlx1xBm/tcXUhw3OsUroj13u5oSSIPuEABGOK3Pe+T7lWCJPKACwRGt/hB31lbeTyZPOACATHtNy4xxD/lyiD+cLPXjyjygAsExJDM5XyJF++zcn1SecAFApG1uncZ4qX8qYqfTi4PuEAAJpuzF2iSbz3Xz4Z5bRmeB1wgANrKvrwnn8moc1OSecAFRqTR7t6iif/wTlWUbB5wgVFXobD8pXdX9fUjzdfOTzYPuMAIaOJn80eG/Klt5/ak84ALDIm7nXW3tfmjQ15SqecBFxiCZrN5trF8MOdG8n1j5tWLVOp5wAWGoGH5Kd+r0e40VBnyGIeAsbyj0ZK7Q/jq6fmr/QXWtGVWgSh9IRnJ9pWLLf/mHvyN6qtJ3vfuqn6ebMqlKhClLmT1ccbiv+d5XhrmccYamvhR3yez8pAKSKkLcacqd3QYbxva8vODPIF1bLPdy/x1gDXJO4NsQ1W9kJXPdx/wb0/XzvuDLCapid/0tnEy1NpelSrE0bB8pz+lulrKBxPNzsUbOrZ50v+sIX5iGJcNv6sKhTj0FN9orPzQE6yVL/5vSUFXmL8IwaCTToNQmUIc21pz17hnTX1+279rTHWuU33QJK94P7topuZvUAVRqULWplndgsR9Tl8ndGv+NrUOY+WOnkknkmdUgVSuEMc9L8xdqInf6z1SZCGj7lb3MxP7Dpynib/yyvi8kLVyq16Iw91hacvdniPFzW2Q7DQkM/l/4zNmWm5WBVPZQtYeEmriF/tcU5Z6Jp2Ip9UYqHQhaxgre/xrRchJp6TygAusotv8sCb5vfdiP/qkU1J5wAXW4Z4Iu9WivWvHy2qMwPOAC3hk1LlVk/yyWsaxzfxPvlR5wAX6YFrz1xqSb0JNOiWVB1zgPxj3kRFNHnCByIDnAReIDHgecIHIgOcBF4gMeB5wgciA5wEXiAx4HnCByIDnAReIDHgecIHIgOcBF4gMeB5wgciA5wEXiAx4HnCByIDnAReIDHgecIHIgOcBF4gMeB5wgciA5zGoQNWGqguRqEZdiI1r1IXYuEZ0hdTkqQupXCHen24W8SJlWXArm+YKITkV/EsM8eH8l/D+upT+ZWgrB9ZnpYkPqdBklnejL5wm1VHEm8ArbzLJUfjO2bSGJvm4sNfrMupsMSRH0Dtpkhn8ictMFYlr21jZ5dah0pZP43daohormfBBd5oa5sj4C0FLxjOuXHASAAAAAElFTkSuQmCC" alt=""></div>
+        <span class="card-title">4. Safety on the Premises</span>
+      </div><span class="chevron">▲</span>
+    </div>
+    <div class="card-body">
+      <ul class="checks" data-lang="en">
+        <li>Use electrical and gas appliances responsibly</li>
+        <li>Avoid leaving appliances running unattended</li>
+        <li>Familiarise yourself with emergency switches and fire extinguishers</li>
+        <li>Follow posted signs and safety notices</li>
+      </ul>
+      <ul class="checks" data-lang="fr">
+        <li>Utiliser les appareils électriques et à gaz de manière responsable</li>
+        <li>Ne pas laisser d'appareils fonctionner sans surveillance</li>
+        <li>Se familiariser avec les interrupteurs d'urgence et extincteurs</li>
+        <li>Respecter les consignes de sécurité affichées</li>
+      </ul>
+      <ul class="checks" data-lang="es">
+        <li>Usar los electrodomésticos de forma responsable</li>
+        <li>No dejar aparatos en funcionamiento sin supervisión</li>
+        <li>Familiarizarse con los interruptores de emergencia y extintores</li>
+        <li>Seguir los avisos de seguridad</li>
+      </ul>
+      <ul class="checks" data-lang="de">
+        <li>Geräte verantwortungsbewusst nutzen</li>
+        <li>Keine laufenden Geräte unbeaufsichtigt lassen</li>
+        <li>Notschalter und Feuerlöscher kennenlernen</li>
+        <li>Sicherheitshinweise beachten</li>
+      </ul>
+      <div class="note note-blue" style="margin-top:14px">🆘 <strong>Emergency: 112</strong></div>
+    </div>
+  </div>
+
+  <!-- 5. Electricity -->
+  <div class="card">
+    <div class="card-header" onclick="toggle(this)">
+      <div class="card-header-left">
+        <div class="icon-wrap"><img src="data:image/png;base64,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" alt=""></div>
+        <span class="card-title">5. Electricity &amp; Utilities</span>
+      </div><span class="chevron">▲</span>
+    </div>
+    <div class="card-body">
+      <ul class="checks" data-lang="en">
+        <li>Switch off lights, AC, and appliances when leaving the villa</li>
+        <li>Do not overload electrical sockets or use non-approved adaptors</li>
+        <li>Electric vehicle charging and the use of high-power equipment (power tools, industrial appliances) are strictly prohibited without prior written authorisation</li>
+      </ul>
+      <ul class="checks" data-lang="fr">
+        <li>Éteindre les lumières, la climatisation et les appareils en quittant la villa</li>
+        <li>Ne pas surcharger les prises ni utiliser des adaptateurs non approuvés</li>
+        <li>La recharge de véhicules électriques et l'utilisation d'équipements haute puissance (outils électriques, appareils industriels) sont strictement interdits sans autorisation écrite préalable</li>
+      </ul>
+      <ul class="checks" data-lang="es">
+        <li>Apagar luces, aire acondicionado y aparatos al salir de la villa</li>
+        <li>No sobrecargar los enchufes ni usar adaptadores no autorizados</li>
+        <li>La carga de vehículos eléctricos y el uso de equipos de alta potencia (herramientas eléctricas, aparatos industriales) están estrictamente prohibidos sin autorización escrita previa</li>
+      </ul>
+      <ul class="checks" data-lang="de">
+        <li>Lichter, Klimaanlage und Geräte beim Verlassen ausschalten</li>
+        <li>Steckdosen nicht überlasten, keine nicht zugelassenen Adapter verwenden</li>
+        <li>Das Laden von Elektrofahrzeugen und die Nutzung von Hochleistungsgeräten (Elektrowerkzeuge, Industriegeräte) sind ohne schriftliche Genehmigung strikt verboten</li>
+      </ul>
+      <div class="note note-amber" data-lang="en">📌 Abusive consumption of utilities may be charged additionally.</div>
+      <div class="note note-amber" data-lang="fr">📌 Une consommation abusive des services peut entraîner des frais supplémentaires.</div>
+      <div class="note note-amber" data-lang="es">📌 El consumo abusivo de suministros podrá ser facturado adicionalmente.</div>
+      <div class="note note-amber" data-lang="de">📌 Übermäßiger Verbrauch kann zusätzlich berechnet werden.</div>
+    </div>
+  </div>
+
+  <!-- 6. Children -->
+  <div class="card">
+    <div class="card-header" onclick="toggle(this)">
+      <div class="card-header-left">
+        <div class="icon-wrap"><img src="data:image/png;base64,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" alt=""></div>
+        <span class="card-title">6. Children</span>
+      </div><span class="chevron">▲</span>
+    </div>
+    <div class="card-body">
+      <p data-lang="en">Children must be supervised at all times, especially near:</p>
+      <ul class="bullets" data-lang="en">
+        <li>the pool</li>
+        <li>stairs and terraces</li>
+        <li>balconies and elevated areas</li>
+      </ul>
+      <p data-lang="en">Parents and guardians are fully responsible for incidents involving minors due to lack of supervision or disregard for safety rules.</p>
+      <p data-lang="fr">Les enfants doivent être surveillés en permanence, notamment près de la piscine, des escaliers, terrasses et balcons.</p>
+      <ul class="bullets" data-lang="fr" style="display:none"></ul>
+      <p data-lang="fr">Les parents et tuteurs sont entièrement responsables des incidents impliquant des mineurs par manque de surveillance.</p>
+      <p data-lang="es">Los niños deben estar supervisados en todo momento, especialmente cerca de la piscina, escaleras, terrazas y zonas elevadas.</p>
+      <p data-lang="es">Los padres y tutores son plenamente responsables de los incidentes con menores debidos a falta de supervisión.</p>
+      <p data-lang="de">Kinder müssen jederzeit beaufsichtigt werden, besonders am Pool, Treppen, Terrassen und erhöhten Bereichen.</p>
+      <p data-lang="de">Eltern und Erziehungsberechtigte haften vollständig für Vorfälle mit Minderjährigen infolge mangelnder Aufsicht.</p>
+    </div>
+  </div>
+
+  <!-- 7. Allergies -->
+  <div class="card">
+    <div class="card-header" onclick="toggle(this)">
+      <div class="card-header-left">
+        <div class="icon-wrap"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAAFPklEQVR4nM1aW4gcVRC9ic8EX0EFUfHDx4fBVxTjh/Hxo67u7Nw7CxM/BKNRBD8kBkT90Zadqp7Z4EqMSlgMrtmumtURURYSUBIfUb/8MIT4QHyhSYyP1ZgYE0ncleq+szO70zPb3TOzMwXN0Pfeqq7TVXVvVfUoVYe0y3cZ5L8yUOxVHSbjUkojHZLf2MwaeaNBntLgPao6TAZ5ja8L8sb4zMDvBUC4L2w+65RONsCDGnmfAdprkAsyFlV+HH7jUkp0EZ1igdADdKUB2i/MafSWhgpHLvjCZ16FqM+Iw28Gxi63FvklVdh80ZzC0/niMg28c1ow0GR2qLQoVHjwFmcqArQ3MpAY/KuckVNFl6q1H/YP8GWhgjMF70KNNGEF7jdAWzQStUKRVvBrIM8gjRvkP6119mWxdG7tQqQXgpigd7NO6bQkrqGB8pGBJOTvzfMSjfSRjZnBMMGf2cnlkYNVlJE3mzTYE/L3I90YWIW+qJnUQAf84B7cdLrqcko5w4utBf+pmZRBmZRFqsupN89LGgH5UiYzrne96nLKgHetda1vaiYN0kt253hFdTkZILQW8Wom+7B4lUb+zyAdy2DxNtWllEZvqQH+w3/prnd76CKNNGT36CMG6WUNdJ/qEjKut8pPaYB+tTpurbs4WyqdoIFfrJyi9KPqEtLIP1QOTt6mnZGz5mQyeb7OdzOgyW7YjlPO8GLRRwMd991pampBZGYN/G2cA7KdlM4Xl1lrfBWb2QC9FQDxVqsOU9rl+21clOIzI62tu8XNQVJdauCfDPDffl2TpLKrIg30urXIGhWXpmsAoAM9z289JQ6vD2J2QogEsZVQSt3ivH9iOePtc0cvTSJDDslPG1WJ9fkC5dODxfM18BMa6d9g349vGQ3cZ2P187i8FSFYfMQCeTMJkKr7J61VtsfWAfidoFKltSoppRw+xwAdla0vg6NXJAUilrFv9WBs9waa9A9od/PZqhnSQOttrIwlBVJvbM5nI79tn71eNUtSTsqbFKuk3eIN8wUknaObLc/h7LrSeUl0D1Ps6XLARdnBmgWSHSotkurPxudTzeheI9gg7Y5aVzcLxABtsLne7jjlc+RelwSd72LgZdoFxGBxpZ+0Ah2VnE+1g8rbsfhto4ckBWKAl5dLbnmWaif5aX7gYj+LlVoFJJMfvdog/WbXDat2k+M4Cw3ya/aAmwjbyeICkT6BBv7dxsW4pCVqPsg2oN+wYA5lcnxPUiA6R3eX3ckgjcfN61pjGeBnq6q2TT2Od0Y9pWvaoyGXBt4pwOYVyLSC4K32P8LYnrEGfjApEGMb51KfdwRMf54vNsA7ZisVR8ZDw8MnVT7ohPSr5o2mphbI+WKQd4UBEVeUDmG9SxrnjuMs9Ovy4BzZoJHWte0sibirhbnWrjljBKs6JZUO/XGD/HBHwIQCAdriN9bqXNNxhkG6r5EeF4v43RPkI73w6gVdASRyEw593u9mp/IZ4GzLFW0XEMd3SzomVpBmoYxpoA/s1nyH6hYgBumT8NigCQP8nChr77+W9dJssF3Pw9lC6cyuAaKBP258hvBBG/TPWOADdm5k3kE0AlJ3fY5XzDgQc2OXyHZugL73geW8W9urcQtjpMoqO+ReA11jx/ZI7LRN2ShKNYqRoBNJd87m0UgPyL3O0WMd//AUPUYqny3KYz028ZQ+r9ynge9VnaJo1aD9w0COV2j0biq7kZqdCXQqRYkKRJoYISmKW5m3hVazjbl2A5HizAcTWGaPgMhWdUzK/eKWd1HiUNKTvRkZ/wM5EFe1ulAFYwAAAABJRU5ErkJggg==" alt=""></div>
+        <span class="card-title">7. Allergies &amp; Medical Conditions</span>
+      </div><span class="chevron">▲</span>
+    </div>
+    <div class="card-body">
+      <p data-lang="en">The villa may contain insects, pollen, dust, humidity, and common cleaning chemicals typical for the region. Guests are responsible for managing their medical conditions and necessary medications.</p>
+      <p data-lang="fr">La villa peut contenir des insectes, du pollen, de la poussière, de l'humidité et des produits ménagers courants. Les clients sont responsables de la gestion de leur santé et de leurs médicaments.</p>
+      <p data-lang="es">La villa puede contener insectos, polen, polvo, humedad y productos de limpieza habituales. Los huéspedes son responsables de gestionar sus condiciones médicas y medicamentos necesarios.</p>
+      <p data-lang="de">In der Villa können Insekten, Pollen, Staub, Feuchtigkeit und übliche Reinigungsmittel vorkommen. Gäste sind für ihre Erkrankungen und Medikamente selbst verantwortlich.</p>
+      <div class="note note-amber" data-lang="en">📌 The owner is not liable for allergic reactions unless informed in advance.</div>
+      <div class="note note-amber" data-lang="fr">📌 Le propriétaire n'est pas responsable des réactions allergiques sauf s'il en a été informé à l'avance.</div>
+      <div class="note note-amber" data-lang="es">📌 El propietario no es responsable de reacciones alérgicas a menos que haya sido informado con antelación.</div>
+      <div class="note note-amber" data-lang="de">📌 Der Eigentümer haftet nicht für allergische Reaktionen, sofern er nicht im Voraus informiert wurde.</div>
+    </div>
+  </div>
+
+  <!-- 8. Acceptance of Risks -->
+  <div class="card">
+    <div class="card-header" onclick="toggle(this)">
+      <div class="card-header-left">
+        <div class="icon-wrap"><img src="data:image/png;base64,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" alt=""></div>
+        <span class="card-title">8. Acceptance of Risks</span>
+      </div><span class="chevron">▲</span>
+    </div>
+    <div class="card-body">
+      <p data-lang="en">By staying at the villa, guests accept inherent risks such as: an unattended pool, potential slips or falls, weather conditions (wind, heat, rain), and insects or wildlife. Guests remain responsible for their personal safety.</p>
+      <p data-lang="fr">En séjournant, les clients acceptent les risques inhérents : piscine sans surveillance, risques de glissades, conditions météo, insectes ou animaux sauvages.</p>
+      <p data-lang="es">Al alojarse, los huéspedes aceptan riesgos inherentes como: piscina sin vigilancia, posibles caídas, condiciones meteorológicas e insectos o animales.</p>
+      <p data-lang="de">Durch den Aufenthalt akzeptieren Gäste Risiken wie: unbewachter Pool, Ausrutschgefahr, Wetterbedingungen sowie Insekten oder Wildtiere.</p>
+    </div>
+  </div>
+
+  <!-- 9. No Smoking -->
+  <div class="card">
+    <div class="card-header" onclick="toggle(this)">
+      <div class="card-header-left">
+        <div class="icon-wrap"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAAFPklEQVR4nM1aW4gcVRC9ic8EX0EFUfHDx4fBVxTjh/Hxo67u7Nw7CxM/BKNRBD8kBkT90Zadqp7Z4EqMSlgMrtmumtURURYSUBIfUb/8MIT4QHyhSYyP1ZgYE0ncleq+szO70zPb3TOzMwXN0Pfeqq7TVXVvVfUoVYe0y3cZ5L8yUOxVHSbjUkojHZLf2MwaeaNBntLgPao6TAZ5ja8L8sb4zMDvBUC4L2w+65RONsCDGnmfAdprkAsyFlV+HH7jUkp0EZ1igdADdKUB2i/MafSWhgpHLvjCZ16FqM+Iw28Gxi63FvklVdh80ZzC0/niMg28c1ow0GR2qLQoVHjwFmcqArQ3MpAY/KuckVNFl6q1H/YP8GWhgjMF70KNNGEF7jdAWzQStUKRVvBrIM8gjRvkP6119mWxdG7tQqQXgpigd7NO6bQkrqGB8pGBJOTvzfMSjfSRjZnBMMGf2cnlkYNVlJE3mzTYE/L3I90YWIW+qJnUQAf84B7cdLrqcko5w4utBf+pmZRBmZRFqsupN89LGgH5UiYzrne96nLKgHetda1vaiYN0kt253hFdTkZILQW8Wom+7B4lUb+zyAdy2DxNtWllEZvqQH+w3/prnd76CKNNGT36CMG6WUNdJ/qEjKut8pPaYB+tTpurbs4WyqdoIFfrJyi9KPqEtLIP1QOTt6mnZGz5mQyeb7OdzOgyW7YjlPO8GLRRwMd991pampBZGYN/G2cA7KdlM4Xl1lrfBWb2QC9FQDxVqsOU9rl+21clOIzI62tu8XNQVJdauCfDPDffl2TpLKrIg30urXIGhWXpmsAoAM9z289JQ6vD2J2QogEsZVQSt3ivH9iOePtc0cvTSJDDslPG1WJ9fkC5dODxfM18BMa6d9g349vGQ3cZ2P187i8FSFYfMQCeTMJkKr7J61VtsfWAfidoFKltSoppRw+xwAdla0vg6NXJAUilrFv9WBs9waa9A9od/PZqhnSQOttrIwlBVJvbM5nI79tn71eNUtSTsqbFKuk3eIN8wUknaObLc/h7LrSeUl0D1Ps6XLARdnBmgWSHSotkurPxudTzeheI9gg7Y5aVzcLxABtsLne7jjlc+RelwSd72LgZdoFxGBxpZ+0Ah2VnE+1g8rbsfhto4ckBWKAl5dLbnmWaif5aX7gYj+LlVoFJJMfvdog/WbXDat2k+M4Cw3ya/aAmwjbyeICkT6BBv7dxsW4pCVqPsg2oN+wYA5lcnxPUiA6R3eX3ckgjcfN61pjGeBnq6q2TT2Od0Y9pWvaoyGXBt4pwOYVyLSC4K32P8LYnrEGfjApEGMb51KfdwRMf54vNsA7ZisVR8ZDw8MnVT7ohPSr5o2mphbI+WKQd4UBEVeUDmG9SxrnjuMs9Ovy4BzZoJHWte0sibirhbnWrjljBKs6JZUO/XGD/HBHwIQCAdriN9bqXNNxhkG6r5EeF4v43RPkI73w6gVdASRyEw593u9mp/IZ4GzLFW0XEMd3SzomVpBmoYxpoA/s1nyH6hYgBumT8NigCQP8nChr77+W9dJssF3Pw9lC6cyuAaKBP258hvBBG/TPWOADdm5k3kE0AlJ3fY5XzDgQc2OXyHZugL73geW8W9urcQtjpMoqO+ReA11jx/ZI7LRN2ShKNYqRoBNJd87m0UgPyL3O0WMd//AUPUYqny3KYz028ZQ+r9ynge9VnaJo1aD9w0COV2j0biq7kZqdCXQqRYkKRJoYISmKW5m3hVazjbl2A5HizAcTWGaPgMhWdUzK/eKWd1HiUNKTvRkZ/wM5EFe1ulAFYwAAAABJRU5ErkJggg==" alt=""></div>
+        <span class="card-title">9. No Smoking</span>
+      </div><span class="chevron">▲</span>
+    </div>
+    <div class="card-body">
+      <p data-lang="en">Smoking is strictly prohibited inside the villa — cigarettes, cigars, pipes, e-cigarettes, vapes, and prohibited substances. Smoking is allowed outdoors only. Cigarette butts must be disposed of properly and never thrown on the ground.</p>
+      <p data-lang="fr">Il est strictement interdit de fumer à l'intérieur — cigarettes, cigares, pipes, e-cigarettes et substances interdites. Autorisé uniquement à l'extérieur. Les mégots doivent être jetés correctement.</p>
+      <p data-lang="es">Está estrictamente prohibido fumar dentro de la villa. Permitido únicamente en exteriores. Las colillas deben desecharse correctamente, nunca en el suelo.</p>
+      <p data-lang="de">Rauchen in der Villa strikt verboten. Nur im Außenbereich erlaubt. Zigarettenstummel ordnungsgemäß entsorgen, nie auf den Boden werfen.</p>
+      <div class="note note-red" data-lang="en">⚠️ Violations may result in cleaning fees and/or termination of stay without refund.</div>
+      <div class="note note-red" data-lang="fr">⚠️ Les infractions peuvent entraîner des frais de nettoyage et/ou la résiliation sans remboursement.</div>
+      <div class="note note-red" data-lang="es">⚠️ Las infracciones podrán dar lugar a cargos de limpieza y/o resolución sin reembolso.</div>
+      <div class="note note-red" data-lang="de">⚠️ Verstöße können Reinigungsgebühren und Beendigung des Aufenthalts ohne Rückerstattung zur Folge haben.</div>
+    </div>
+  </div>
+
+  <!-- 10. Pets -->
+  <div class="card">
+    <div class="card-header" onclick="toggle(this)">
+      <div class="card-header-left">
+        <div class="icon-wrap"><img src="data:image/png;base64,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" alt=""></div>
+        <span class="card-title">10. Pets</span>
+      </div><span class="chevron">▲</span>
+    </div>
+    <div class="card-body">
+      <p data-lang="en">Pets are allowed only with prior written permission. If approved, guests must supervise the pet at all times, clean up after it, and pay for any damage caused.</p>
+      <p data-lang="es">Las mascotas solo se admiten con autorización escrita previa. Los huéspedes deben supervisarlas y pagar cualquier daño causado.</p>
+      <p data-lang="de">Haustiere nur mit vorheriger schriftlicher Genehmigung. Gäste müssen das Tier beaufsichtigen und für Schäden aufkommen.</p>
+      <div class="note note-red" data-lang="en">⚠️ Unauthorised pets may result in eviction and additional charges.</div>
+      <div class="note note-red" data-lang="fr">⚠️ Les animaux non autorisés peuvent entraîner l'expulsion et des frais supplémentaires.</div>
+      <div class="note note-red" data-lang="es">⚠️ Las mascotas no autorizadas podrán dar lugar a desalojo y cargos adicionales.</div>
+      <div class="note note-red" data-lang="de">⚠️ Nicht autorisierte Haustiere können zur Ausweisung und zusätzlichen Kosten führen.</div>
+    </div>
+  </div>
+
+  <!-- 11. Visitors -->
+  <div class="card">
+    <div class="card-header" onclick="toggle(this)">
+      <div class="card-header-left">
+        <div class="icon-wrap"><img src="data:image/png;base64,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" alt=""></div>
+        <span class="card-title">11. Visitors &amp; Occupancy</span>
+      </div><span class="chevron">▲</span>
+    </div>
+    <div class="card-body">
+      <p data-lang="en">Only guests listed in the reservation and properly registered may be present on the property at any time. Visitors and third parties not included in the reservation are not permitted. Any person remaining on the property overnight must be registered as a guest, in accordance with Real Decreto 933/2021.</p>
+      <p data-lang="en">The maximum occupancy is <strong>10 persons at any time</strong>, including registered guests and day visitors.</p>
+      <ul class="checks" data-lang="en">
+        <li>Overnight stays for registered guests only</li>
+        <li>Day visitors welcome — total must not exceed 10 persons at any moment</li>
+        <li>All visitors must leave before quiet hours (21:00 outdoors / 22:00 indoors)</li>
+      </ul>
+      <p data-lang="fr">Seuls les clients enregistrés sont autorisés sur la propriété. Les visiteurs non inclus dans la réservation ne sont pas admis. Toute personne restant la nuit doit être enregistrée conformément au Real Decreto 933/2021.</p>
+      <p data-lang="fr">L'occupation maximale est de <strong>10 personnes à tout moment</strong>.</p>
+      <ul class="checks" data-lang="fr">
+        <li>Nuitées réservées aux clients enregistrés</li>
+        <li>Visiteurs de jour bienvenus — total ne doit pas dépasser 10 personnes</li>
+        <li>Tous les visiteurs doivent partir avant les heures de silence (21h / 22h)</li>
+      </ul>
+      <p data-lang="es">Solo los huéspedes registrados pueden estar en la propiedad. Los visitantes no incluidos en la reserva no están permitidos. Cualquier persona que pernocte debe estar registrada conforme al Real Decreto 933/2021.</p>
+      <p data-lang="es">La ocupación máxima es de <strong>10 personas en todo momento</strong>.</p>
+      <ul class="checks" data-lang="es">
+        <li>Pernoctaciones exclusivamente para huéspedes registrados</li>
+        <li>Visitas diurnas bienvenidas — el total no debe superar 10 personas</li>
+        <li>Todos los visitantes deben marcharse antes de las horas de silencio (21:00 / 22:00)</li>
+      </ul>
+      <p data-lang="de">Nur registrierte Gäste dürfen sich auf dem Grundstück aufhalten. Besucher außerhalb der Buchung sind nicht gestattet. Jede übernachtende Person muss gemäß Real Decreto 933/2021 registriert sein.</p>
+      <p data-lang="de">Maximale Belegung: <strong>10 Personen jederzeit</strong>.</p>
+      <ul class="checks" data-lang="de">
+        <li>Übernachtungen nur für registrierte Gäste</li>
+        <li>Tagesbesucher willkommen — max. 10 Personen</li>
+        <li>Alle Besucher müssen vor Ruhezeiten gehen (21:00 / 22:00)</li>
+      </ul>
+      <div class="note note-amber" data-lang="en">📌 Any person present on the property is subject to a daily rate of <strong>€20 per person per day</strong>.</div>
+      <div class="note note-amber" data-lang="fr">📌 Toute personne présente est soumise au tarif de <strong>20 € par personne par jour</strong>.</div>
+      <div class="note note-amber" data-lang="es">📌 Cualquier persona presente está sujeta a la tarifa de <strong>20 € por persona por día</strong>.</div>
+      <div class="note note-amber" data-lang="de">📌 Jede anwesende Person unterliegt dem Tagessatz von <strong>20 € pro Person pro Tag</strong>.</div>
+      <div class="note note-red" data-lang="en">🚫 Exceeding 10 persons may result in immediate termination of stay without refund.</div>
+      <div class="note note-red" data-lang="fr">🚫 Dépasser 10 personnes peut entraîner la résiliation immédiate sans remboursement.</div>
+      <div class="note note-red" data-lang="es">🚫 Superar las 10 personas puede resultar en resolución inmediata sin reembolso.</div>
+      <div class="note note-red" data-lang="de">🚫 Mehr als 10 Personen kann zur sofortigen Beendigung ohne Rückerstattung führen.</div>
+    </div>
+  </div>
+
+  <!-- 12. Parties -->
+  <div class="card">
+    <div class="card-header" onclick="toggle(this)">
+      <div class="card-header-left">
+        <div class="icon-wrap"><img src="data:image/png;base64,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" alt=""></div>
+        <span class="card-title">12. Parties, Events &amp; Commercial Activity</span>
+      </div><span class="chevron">▲</span>
+    </div>
+    <div class="card-body">
+      <p data-lang="en">The villa is a private residential rental. It is rented exclusively for personal holiday accommodation. The following are strictly prohibited without prior written authorisation:</p>
+      <ul class="crosses" data-lang="en">
+        <li>Parties, large gatherings, or events with external attendees</li>
+        <li>Any commercial activity on the premises — retreats, workshops, yoga sessions, seminars, coaching programmes, or any event for which participants pay a fee or are recruited externally</li>
+        <li>Subletting, re-selling, or advertising access to the property to third parties</li>
+        <li>Filming, photo shoots, or productions for commercial purposes (see section 17)</li>
+      </ul>
+      <p data-lang="fr">La villa est une location résidentielle privée, exclusivement destinée à l'hébergement personnel en vacances. Sont strictement interdits sans autorisation écrite préalable :</p>
+      <ul class="crosses" data-lang="fr">
+        <li>Fêtes, grands rassemblements ou événements avec des participants externes</li>
+        <li>Toute activité commerciale — retraites, ateliers, séances de yoga, séminaires, programmes de coaching, ou tout événement payant</li>
+        <li>Sous-location, revente ou publicité pour l'accès à la propriété à des tiers</li>
+        <li>Tournages ou séances photo à des fins commerciales (voir section 17)</li>
+      </ul>
+      <p data-lang="es">La villa es un alquiler residencial privado, destinado exclusivamente al alojamiento personal de vacaciones. Están estrictamente prohibidos sin autorización escrita previa:</p>
+      <ul class="crosses" data-lang="es">
+        <li>Fiestas, grandes reuniones o eventos con asistentes externos</li>
+        <li>Cualquier actividad comercial — retiros, talleres, sesiones de yoga, seminarios, programas de coaching, o cualquier evento de pago</li>
+        <li>Subarriendo, reventa o publicidad de acceso a la propiedad a terceros</li>
+        <li>Rodajes o sesiones fotográficas con fines comerciales (ver sección 17)</li>
+      </ul>
+      <p data-lang="de">Die Villa ist eine private Wohnvermietung, ausschließlich für den persönlichen Ferienaufenthalt. Ohne vorherige schriftliche Genehmigung strikt verboten:</p>
+      <ul class="crosses" data-lang="de">
+        <li>Partys, große Versammlungen oder Veranstaltungen mit externen Teilnehmern</li>
+        <li>Jegliche gewerbliche Tätigkeit — Retreats, Workshops, Yoga-Sessions, Seminare, Coaching-Programme oder gebührenpflichtige Veranstaltungen</li>
+        <li>Untervermieten, Weiterverkaufen oder Bewerben des Zugangs zur Unterkunft</li>
+        <li>Kommerzielle Drehs oder Fotoshootings (siehe Abschnitt 17)</li>
+      </ul>
+      <div class="note note-red" data-lang="en">🚫 Any unauthorised commercial use or event may result in immediate termination of stay without refund.</div>
+      <div class="note note-red" data-lang="fr">🚫 Toute utilisation commerciale ou événement non autorisé peut entraîner la résiliation immédiate sans remboursement.</div>
+      <div class="note note-red" data-lang="es">🚫 Cualquier uso comercial o evento no autorizado podrá resultar en resolución inmediata sin reembolso.</div>
+      <div class="note note-red" data-lang="de">🚫 Jede nicht autorisierte kommerzielle Nutzung kann zur sofortigen Beendigung ohne Rückerstattung führen.</div>
+    </div>
+  </div>
+
+  <!-- 13. Cameras -->
+  <div class="card">
+    <div class="card-header" onclick="toggle(this)">
+      <div class="card-header-left">
+        <div class="icon-wrap"><img src="data:image/png;base64,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" alt=""></div>
+        <span class="card-title">13. Security Cameras</span>
+      </div><span class="chevron">▲</span>
+    </div>
+    <div class="card-body">
+      <p data-lang="en">The villa is equipped with outdoor-only security cameras located at:</p>
+      <ul class="bullets" data-lang="en">
+        <li>the main entrance</li>
+        <li>the garden / pool access route</li>
+      </ul>
+      <p data-lang="en">There are no cameras indoors and no cameras in private or intimate areas.</p>
+
+      <div class="section-label" data-lang="en">Purpose of the system</div>
+      <ul class="checks" data-lang="en">
+        <li>Prevent unauthorised access</li>
+        <li>Protect guests, property, and equipment</li>
+      </ul>
+
+      <div class="section-label" data-lang="en">Cameras do NOT</div>
+      <ul class="crosses" data-lang="en">
+        <li>Monitor behaviour or leisure activities</li>
+        <li>Record pool use or sunbathing areas</li>
+        <li>Identify individuals or count guests</li>
+        <li>Observe routines or personal conduct</li>
+      </ul>
+
+      <div class="section-label" data-lang="en">Operation</div>
+      <ul class="bullets" data-lang="en">
+        <li>📍 Entrance cameras operate 24/7</li>
+        <li>🌙 Garden/pool camera operates 00:00–07:00 only</li>
+        <li>☀️ It remains off during the day — schedules are not modified on request</li>
+      </ul>
+
+      <div class="section-label" data-lang="en">Tampering is prohibited</div>
+      <ul class="crosses" data-lang="en">
+        <li>Covering, moving, disconnecting, or obstructing any camera</li>
+        <li>Attempting to disable Wi-Fi or power supply</li>
+      </ul>
+      <p data-lang="en">All cameras are clearly signposted, disclosed before booking, and fully detailed in the <strong>CCTV Policy</strong> located inside the villa.</p>
+      <div class="note note-red" data-lang="en">⚠️ Tampering with any camera will result in a €200 fee and may lead to termination of stay.</div>
+
+      <!-- FR -->
+      <p data-lang="fr">La villa dispose de caméras extérieures uniquement : entrée principale et accès jardin/piscine. Aucune caméra à l'intérieur ni dans les zones privées.</p>
+      <div class="section-label" data-lang="fr">Objectif du système</div>
+      <ul class="checks" data-lang="fr"><li>Prévenir les accès non autorisés</li><li>Protéger les clients et la propriété</li></ul>
+      <div class="section-label" data-lang="fr">Les caméras ne font PAS</div>
+      <ul class="crosses" data-lang="fr"><li>Surveiller le comportement ou les loisirs</li><li>Enregistrer l'utilisation de la piscine</li><li>Identifier les individus ou compter les clients</li></ul>
+      <div class="section-label" data-lang="fr">Fonctionnement</div>
+      <ul class="bullets" data-lang="fr"><li>📍 Caméras d'entrée : 24h/24</li><li>🌙 Caméra jardin/piscine : 00:00–07:00 uniquement</li><li>☀️ Inactive en journée — horaires non modifiables sur demande</li></ul>
+      <p data-lang="fr">Toutes les caméras sont signalées et détaillées dans la <strong>Politique CCTV</strong> disponible dans la villa.</p>
+      <div class="note note-red" data-lang="fr">⚠️ Toute manipulation entraînera des frais de 200 € et pourra conduire à la résiliation.</div>
+
+      <!-- ES -->
+      <p data-lang="es">La villa dispone de cámaras únicamente en exteriores: entrada principal y acceso jardín/piscina. Sin cámaras en interiores ni zonas privadas.</p>
+      <div class="section-label" data-lang="es">Finalidad del sistema</div>
+      <ul class="checks" data-lang="es"><li>Prevenir accesos no autorizados</li><li>Proteger a los huéspedes y la propiedad</li></ul>
+      <div class="section-label" data-lang="es">Las cámaras NO hacen</div>
+      <ul class="crosses" data-lang="es"><li>Supervisar comportamiento o actividades de ocio</li><li>Grabar el uso de la piscina</li><li>Identificar personas ni contar huéspedes</li></ul>
+      <div class="section-label" data-lang="es">Funcionamiento</div>
+      <ul class="bullets" data-lang="es"><li>📍 Cámaras de entrada: 24/7</li><li>🌙 Cámara jardín/piscina: solo 00:00–07:00</li><li>☀️ Inactiva durante el día — horarios no modificables</li></ul>
+      <p data-lang="es">Todas las cámaras están señalizadas y detalladas en la <strong>Política CCTV</strong> dentro de la villa.</p>
+      <div class="note note-red" data-lang="es">⚠️ Manipular cualquier cámara supondrá un cargo de 200 € y podrá dar lugar a la resolución.</div>
+
+      <!-- DE -->
+      <p data-lang="de">Nur Außenkameras: Haupteingang und Garten-/Poolzugang. Keine Kameras innen oder in privaten Bereichen.</p>
+      <div class="section-label" data-lang="de">Zweck des Systems</div>
+      <ul class="checks" data-lang="de"><li>Unberechtigten Zugang verhindern</li><li>Gäste und Eigentum schützen</li></ul>
+      <div class="section-label" data-lang="de">Kameras tun NICHT</div>
+      <ul class="crosses" data-lang="de"><li>Verhalten oder Freizeitaktivitäten überwachen</li><li>Poolnutzung aufzeichnen</li><li>Personen identifizieren oder zählen</li></ul>
+      <div class="section-label" data-lang="de">Betrieb</div>
+      <ul class="bullets" data-lang="de"><li>📍 Eingangskameras: 24/7</li><li>🌙 Garten-/Poolkamera: nur 00:00–07:00</li><li>☀️ Tagsüber inaktiv — Zeiten auf Anfrage nicht änderbar</li></ul>
+      <p data-lang="de">Alle Kameras sind ausgeschildert und in der <strong>CCTV-Richtlinie</strong> in der Villa beschrieben.</p>
+      <div class="note note-red" data-lang="de">⚠️ Kameramanipulationen: 200 € Gebühr und mögliche Beendigung des Aufenthalts.</div>
+    </div>
+  </div>
+
+  <!-- 14. Noise -->
+  <div class="card">
+    <div class="card-header" onclick="toggle(this)">
+      <div class="card-header-left">
+        <div class="icon-wrap"><img src="data:image/png;base64,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" alt=""></div>
+        <span class="card-title">14. Noise &amp; Quiet Hours</span>
+      </div><span class="chevron">▲</span>
+    </div>
+    <div class="card-body">
+      <div class="time-grid">
+        <div class="time-cell"><div class="label">🏠 Indoors</div><div class="value">22:00 – 09:00</div></div>
+        <div class="time-cell"><div class="label">🌳 Outdoors</div><div class="value">21:00 – 09:00</div></div>
+      </div>
+      <p data-lang="en">During quiet hours, guests are expected to keep noise to a minimum. This means no loud conversations, no shouting, and no gatherings on terraces, in the garden, or in the pool area. Please be mindful that neighbours live permanently in the area.</p>
+      <p data-lang="en">Music and amplified sound outdoors is not permitted at any time of day. Repeated noise complaints may result in termination of stay without refund.</p>
+      <p data-lang="fr">Pendant les heures de silence, les clients doivent limiter le bruit au minimum : pas de conversations bruyantes, pas de cris, pas de rassemblements sur les terrasses, dans le jardin ou à la piscine. Les voisins résident en permanence dans le quartier.</p>
+      <p data-lang="fr">La musique et le son amplifié à l'extérieur ne sont pas autorisés à aucun moment. Des plaintes répétées peuvent entraîner la résiliation sans remboursement.</p>
+      <p data-lang="es">Durante las horas de silencio, los huéspedes deben mantener el ruido al mínimo: sin conversaciones en voz alta, sin gritos ni reuniones en terrazas, jardín o zona de piscina. Los vecinos residen permanentemente en la zona.</p>
+      <p data-lang="es">La música y el sonido amplificado en exteriores no están permitidos en ningún momento. Las quejas reiteradas pueden dar lugar a la resolución sin reembolso.</p>
+      <p data-lang="de">Während der Ruhezeiten sind Lärm auf ein Minimum zu reduzieren: keine lauten Gespräche, kein Schreien, keine Versammlungen auf Terrassen, im Garten oder am Pool. Die Nachbarn sind Dauermieter in der Gegend.</p>
+      <p data-lang="de">Musik und Lärm außen sind zu keiner Zeit gestattet. Wiederholte Beschwerden können zur Beendigung ohne Rückerstattung führen.</p>
+    </div>
+  </div>
+
+  <!-- 15. Pool -->
+  <div class="card">
+    <div class="card-header" onclick="toggle(this)">
+      <div class="card-header-left">
+        <div class="icon-wrap"><img src="data:image/png;base64,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" alt=""></div>
+        <span class="card-title">15. Pool Behaviour</span>
+      </div><span class="chevron">▲</span>
+    </div>
+    <div class="card-body">
+      <p data-lang="en"><strong>Pool hours: 08:00 – 22:00</strong></p>
+      <p data-lang="fr"><strong>Heures piscine : 08:00 – 22:00</strong></p>
+      <p data-lang="es"><strong>Horario de piscina: 08:00 – 22:00</strong></p>
+      <p data-lang="de"><strong>Poolzeiten: 08:00 – 22:00</strong></p>
+      <ul class="checks" style="margin-top:10px" data-lang="en"><li>Children must be supervised at all times</li></ul>
+      <ul class="checks" style="margin-top:10px" data-lang="fr"><li>Les enfants doivent être surveillés en permanence</li></ul>
+      <ul class="checks" style="margin-top:10px" data-lang="es"><li>Los niños deben estar supervisados en todo momento</li></ul>
+      <ul class="checks" style="margin-top:10px" data-lang="de"><li>Kinder müssen jederzeit beaufsichtigt werden</li></ul>
+      <ul class="crosses" data-lang="en">
+        <li>Jumping or diving into the pool is prohibited</li>
+        <li>Glass, sharp objects, or food in the water</li>
+        <li>Pool use under the influence of alcohol or substances</li>
+        <li>Loud games or shouting near the pool</li>
+      </ul>
+      <ul class="crosses" data-lang="fr">
+        <li>Interdit de sauter ou plonger dans la piscine</li>
+        <li>Verre, objets tranchants ou nourriture dans l'eau</li>
+        <li>Utilisation sous l'emprise de l'alcool ou de substances</li>
+        <li>Jeux bruyants ou cris près de la piscine</li>
+      </ul>
+      <ul class="crosses" data-lang="es">
+        <li>Está prohibido saltar o tirarse a la piscina</li>
+        <li>Cristal, objetos cortantes o comida en el agua</li>
+        <li>Usar la piscina bajo los efectos del alcohol</li>
+        <li>Juegos ruidosos o gritos cerca de la piscina</li>
+      </ul>
+      <ul class="crosses" data-lang="de">
+        <li>Springen oder Tauchen verboten</li>
+        <li>Kein Glas, scharfe Gegenstände oder Essen im Wasser</li>
+        <li>Keine Poolnutzung unter Alkoholeinfluss</li>
+        <li>Kein Lärm am Pool</li>
+      </ul>
+      <div class="note note-amber" data-lang="en">📌 No lifeguard is present. Pool use is at the guest's own risk.</div>
+      <div class="note note-amber" data-lang="fr">📌 Aucun maître-nageur. Utilisation aux risques du client.</div>
+      <div class="note note-amber" data-lang="es">📌 No hay socorrista. El uso de la piscina es bajo responsabilidad del huésped.</div>
+      <div class="note note-amber" data-lang="de">📌 Kein Bademeister. Poolnutzung auf eigene Gefahr.</div>
+    </div>
+  </div>
+
+  <!-- 16. Terraces -->
+  <div class="card">
+    <div class="card-header" onclick="toggle(this)">
+      <div class="card-header-left">
+        <div class="icon-wrap"><img src="data:image/png;base64,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" alt=""></div>
+        <span class="card-title">16. Terraces &amp; Balconies</span>
+      </div><span class="chevron">▲</span>
+    </div>
+    <div class="card-body">
+      <ul class="crosses" data-lang="en"><li>Sitting or standing on railings is prohibited</li><li>Climbing on terrace walls or structures is prohibited</li></ul>
+      <ul class="crosses" data-lang="fr"><li>S'asseoir ou se tenir sur les rambardes est interdit</li><li>Grimper sur les murs ou structures des terrasses est interdit</li></ul>
+      <ul class="crosses" data-lang="es"><li>Está prohibido sentarse o ponerse de pie sobre las barandillas</li><li>Está prohibido trepar por los muros o estructuras de las terrazas</li></ul>
+      <ul class="crosses" data-lang="de"><li>Sitzen oder Stehen auf Geländern verboten</li><li>Klettern auf Terrassenmauern verboten</li></ul>
+    </div>
+  </div>
+
+  <!-- 17. Registration -->
+  <div class="card">
+    <div class="card-header" onclick="toggle(this)">
+      <div class="card-header-left">
+        <div class="icon-wrap"><img src="data:image/png;base64,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" alt=""></div>
+        <span class="card-title">17. Guest Registration &amp; Data Processing</span>
+      </div><span class="chevron">▲</span>
+    </div>
+    <div class="card-body">
+      <p data-lang="en">In accordance with Spanish tourism and police regulations, all guests must complete mandatory identity registration <strong>before check-in</strong>. No registration — no check-in.</p>
+      <p data-lang="en">Personal data may be processed solely for:</p>
+      <ul class="checks" data-lang="en">
+        <li>Legally mandated reporting to authorities</li>
+        <li>Calculation of tourist taxes</li>
+        <li>Verifying authorised access to the property</li>
+        <li>Resolving contractual issues related to occupancy</li>
+      </ul>
+      <p data-lang="en">Personal data is never used for profiling, marketing, or behaviour monitoring. Guests may exercise their GDPR rights by contacting: 📩 <strong>villas@navamira.com</strong></p>
+      <div class="note note-blue" data-lang="en">💶 Tourist tax: €1 per person per night for guests aged 17 and over, up to a maximum of 7 nights.</div>
+
+      <p data-lang="fr">Conformément à la réglementation espagnole, tous les clients doivent effectuer leur enregistrement d'identité <strong>avant le check-in</strong>. Pas d'enregistrement — pas d'accès.</p>
+      <p data-lang="fr">Les données personnelles ne sont traitées que pour :</p>
+      <ul class="checks" data-lang="fr">
+        <li>Les déclarations légales aux autorités</li>
+        <li>Le calcul des taxes de séjour</li>
+        <li>La vérification de l'accès autorisé</li>
+        <li>La résolution de problèmes contractuels</li>
+      </ul>
+      <p data-lang="fr">Données jamais utilisées à des fins de marketing. Droits RGPD : 📩 <strong>villas@navamira.com</strong></p>
+      <div class="note note-blue" data-lang="fr">💶 Taxe de séjour : 1 € par personne par nuit pour les 17 ans et plus, jusqu'à 7 nuits maximum.</div>
+
+      <p data-lang="es">Conforme a la normativa española, todos los huéspedes deben completar el registro de identidad <strong>antes del check-in</strong>. Sin registro — sin check-in.</p>
+      <p data-lang="es">Los datos personales se procesan exclusivamente para:</p>
+      <ul class="checks" data-lang="es">
+        <li>Comunicaciones legales a las autoridades</li>
+        <li>Cálculo de tasas turísticas</li>
+        <li>Verificación del acceso autorizado</li>
+        <li>Resolución de cuestiones contractuales</li>
+      </ul>
+      <p data-lang="es">Datos nunca usados con fines de marketing. Derechos RGPD: 📩 <strong>villas@navamira.com</strong></p>
+      <div class="note note-blue" data-lang="es">💶 Tasa turística: 1 € por persona por noche para mayores de 17 años, máximo 7 noches.</div>
+
+      <p data-lang="de">Gemäß spanischem Recht müssen alle Gäste ihre Ausweisdaten <strong>vor dem Check-in</strong> registrieren. Keine Registrierung — kein Check-in.</p>
+      <p data-lang="de">Personendaten werden nur verarbeitet für:</p>
+      <ul class="checks" data-lang="de">
+        <li>Gesetzliche Meldepflichten</li>
+        <li>Berechnung der Kurtaxe</li>
+        <li>Überprüfung des autorisierten Zugangs</li>
+        <li>Vertragsrechtliche Fragen</li>
+      </ul>
+      <p data-lang="de">Daten werden nie für Marketing genutzt. DSGVO: 📩 <strong>villas@navamira.com</strong></p>
+      <div class="note note-blue" data-lang="de">💶 Kurtaxe: 1 € pro Person pro Nacht für Gäste ab 17 Jahren, maximal 7 Nächte.</div>
+    </div>
+  </div>
+
+  <!-- 18. Photography -->
+  <div class="card">
+    <div class="card-header" onclick="toggle(this)">
+      <div class="card-header-left">
+        <div class="icon-wrap"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAACXBIWXMAAAsTAAALEwEAmpwYAAANIUlEQVR4nO1dCbAcRRnueERLxAMPvFFTllqilIUieCGBaDR5272hVktKRTkiocQoZYkayOLb7n3hltISI09C3va/z9qyLCwQwhEJh0FUICgSrBAODQEMMYQcBHM865uZ5O38M3vOsbPvva9qql69ne7pme7+7/9vIaYwhSlMYQpTmKCYffn1L8sPjRyR11RQxp4rjbVS29XK0N+kpvVK03+lsS/gcv7G/5zf7GqpbUVpWoS2A6b6oUKxNr3X79N3KNRqL1ZDdKTUdI4ydLM09LwyNBbPZXcrTX9VhpbkSnTC1AQ1wtjYtFzJflppGpbaPhvfBLS8tihjr5Sm8imMQUx2FC6svUkaOl8ZeiTFSRgLu0DqMJYBUz1UTDbMK9nDpKaftUuOpKHHpLHXKU0XK03zlaFj82bk8IHSyLvmDNFrQXpw4e95Q/RuOWg/iHtwrzT2EqXt79FHexNjd0pjfzp3yfJ3iImOOfrqtyptr5Ka/tfiozwJhpwr0zfk0Og743o++lK6cgoEA6XtU80XgSMkDOcuqL5FTDQcW7z1JcrQQmVoa5Nd8Lw0VJOaBnB/0mMqFosvUiX6pDK0VBq7reHkaNoOUjZhBABZGv240vb+ZrQbpCV3wfDBvRojni0NfbMZL5Oa1qgyHSP6FmNj0yC6Sm33NCAJD2Mi0tgNnewa6CzS2AfDd4vdB5EZornoP+nJrmyw0p6Rmk7Dy4uMoghy5goEmxuQsVv6RhqDTB/KMLG6NA3PLdLrRZ+gYGpvgBDi7QzO8zbOM/YTIstQ2kqIjSGragPEUNGnyBl7nNL2iVARWdOAyCIgTjqmieCgb8BKi/NZhWLtlZB8wIcc6UzbtdLYC/O68maREPLFkTdKTTcGF5vdDfFcZAmqRGcHtrVLohbFzSsKxdp0ZewfG9D256SxJ4mEgHeRms4Le9ecsd8VmdkZbICu4lf9ShLPy2v77RZa/d6knr0fOU1fCyi3mJRe7xTwjACZ0rRdafv5pJ4pjb27tanFboNZJakxOOMo0xeUoR2cfPWMp0CaCjBwTduTlDwKMM1ru6v+mfMMvU9pa7i+A3uUSBieps8mhXZAGRZp6xlctHW2cII744Atiome47vVMTr6+Mmsi0YOEgkDO4WTL4wLQoBIA1ilAaXP4SHJ0m0AE85W423+3UOP+z5MSisVPCXIR+1NqSi/nv+CSzeLEn+wEEJqKrGVeHn970oTMZp+ehrjcp5taHGISHxuog/FigvQam1vSMsMorS9l5HJE33jg++j/oOU6GyRElyR2N7Evs2eXLn6seRM6EGr7Ya4lb5GgEOKkcldsrjsNfX3wOnl30HVs0SKcJRHQxvZOO9NxBjpKH8BvpGeOUQZu5wtht/yexyvoo+H2C+JlJEvVWdyfgLdKQFPHz3H+MawSNeWtM/3kqXqTH6f1PRv3z1DI0eIHkAZWsYWz9ZYzTrS0K8Y7X4mLatt7oLhg5W2jzLavDpw32DlvVwfQEyX6AFAxrnpXmr6ZSydy9Lo2x3/sr/z00QKKBRr06Wh65lktTeMUXpxXPX3XS96CKXtGVxPQ3BH5I45o1Sa/pGGVFVwJ+OaEBH74rD7laH72H3fEj2EoxcZeqiZmN5t3BQL1UleAcw70oq9I2Qybg8LNsjrytFc3MyCR0+VKyezce2MNC6uBML/kLQPPKerH2kQQ3UfF3MPjFPbUUYerhUZwPylS18aEjixuLvexsam8c4QmSEShDTVs7jx0FtZaxutLEiA3JaUN9VZIiNQhhawXb6uq7BVJ9bW39H2pEJ15haXviJo9qD9u3IlIhIbtVXa/pDzuCzF6c4uVl7FLcJdWcShZ7BVWkliwIgM5CYRNa58/gLbvuk4jf0La3OGyBiksVX+Xh11AD7Bo9CTIANQlrgkojwdAgyxnT6UsZt8bcvLXycyhny5Opvt+s0dmVMQocd2x5Nx22PAoMMC0qSxDyO5pu2x8gkxtAzOsyyFG7kuC3qakdaj2u4A5nT2kWysI4TAoOl3wZ1hVzSSpBoB8cCh5K7Dy83CcgyDN8Nu1+k4OiZbhn7QSWPmgKqcknSgApTAQhcBzao0OqNhhGG0CdoMb2Bc7wzrBqM6N7XVEPYfrgzGmRIwb5DeE+KHvi+K3UmV6RgvtzDuSXkhLn8G8lbYhOxsawGCfjOJ4FERZ8ysodsCDHxw9P1xiM5S26+DFHoR9dtjmphb43l7hxX4XMzw8bRs5Ga7+lbJdXENSGo6M+SFF4iM6At5M3K41PbH9V5RGDNPLi57eRzPCBhKmcczFPADswm5JI7BwNIZ8KkYuyJLSlwjyS2uCBJl6DLGN3/UspGT7hVzoABWmNT0Z7YztmYxj6/giqh760j2vrj8Kl5SUL3oO9K6kaY72YeL5KbFR0c+RYhUlahdLFLMmZ+HPiXi9Hz6qc8dLRuhCkLHjKd5fyHSC12TRVIF5MuVj4aMtwahQUREiMB0f8tG3F0a1csVeDlNawpLaq8WWU7ZNnUka3zcN0Z1zCHemPX7SMtG8JfHaRtisveqZpbbrEAae6rU9j+B3V2qfjlKvzDnMP68qZ3B+PznUdOB3bRieP+qX8wqmWokBnOLRVs0vwkgHDCStSv1CelnqNLoDLbDn01/QmImWf2MWReNHMQmZGfqJCtupt7PUMEghbWpM/W4xd5+Rd5UZwVKRTUIQUpU7OWKoSxVPiMmGZRTNICJvpq2I6Aictyvv8/bWzZyyuL5G80XkwxS27VBkTd6agOPZkQAec+Mi/0EqenaoLZuH4xq9e3KuJik+b1fUHDsWfY3gUkp2e+lbn73qrHVz+JjYpJCBagF3ROxv3/V9zcwWP1Aey5clu6cdM53VjFgqocyarEtLiUTntK2le6AuTzmIId+wQDTGxDK021f8Ct1FeQAgNkkGgbUBzgZTrWgLWtlt/2FBISf03WgHJw0fVdFLQKgeyljHwiRtLoqbONFgvqsx/C7dNSBW2TYN6OfE5MAKqSYjkdiVnW7KHnBg45DSZ1OjL1yMpItFeJuhjkpSqJNgFwZuqK7Un1MKuhl5dC0IA2VmaViHQqmRfKrMKm1u5IfblXR9VkP9Y8bjonclzRkd0eJ8w3EonWbsAMobYuMj6zPUlnXpCAN3eVjwLpydNcpbYGUbjovWtIn226ofNNJH+5qs5u8Yvd3IRHICbYeoiOz6tJVmm6PIzfGCW1lZD9y0B0KgTFpY20n0RchDLKeuW10j4sglUZtq3YgTeX4QJ5jaXSG6CbgTtt/sm/3ExEVCHTjfvZOTPLNJoTxp11uILYdVOXKZ7E7RUooFGuHKGPnobIR94MggSieZE+7K6o/pZkIvLndKkBtT0j4tQVkTmq6Wmo7BJ+EU4AS9Q41HYWVizD//cdW4IJUs//ZkI6cIyxK9jDclxuqfhiT7eZq2EGEckpNfw/TO8ZJdCXf6fcCWcLxS5HyClsmZvKTDbS9qp223tkehzgfxA2lXOjJ5T7FM2uXNLRX6sp34qhcBFdw7DsegwupVXtct/1BWkN7OMA4rVW9ngxtVyEtPAIP2pd4mQ/XHkNr2KQ8EVeovlMAwNiTpLY/V9r+KdUd5HxA+wDquqCSRLfvAG0eCbJsp92TmB3QTR3jJf6ix7w2S5vOl6oznZN2jP2+W8LPLnePMLJ3o0iAI047Cqzd5NHtLf4awjhWjzZ6Su5DXlXsXyOCBOI36uzGURXPO1HhlpBT4drPto2r2GMkZWeCQIYUB23LZ55EscdMlNnuIVAhKVAm1tiVqbksXLHOf3wDSBkUPDHJkNfVObzculNoIUU9ygEKqIScFbID5bfFJIFqUGq8W9tX9AGV7dyQM0N2YNWICQ7lvLt/MjJBJULppzMwe6qYoJBl+9Ww4yoyEwyCw0xCD3QxtDjLh391JdBAmgp51261+nRXjasL/CHJo4hSPSDM2BUhWv2etKq0dgwoWSFMzj2+IaTwcb9AmsrxXAPvG37pFOzn9c/HSdiytGrFxybeu5aBMGvwhp5JU92daMaUx3GFaTOKBmSZtxTcmrsLAib0cZPIin5aWPVVTRc2Ohl6/xm4rWoqpgmMxT3wKyQ/ZFysPT/Li6klUG+qYZFL90Ip2gX1jqW04Ybq0Jk8IIFbbRM3FKZ+tizP2WtwfPf8FHYNxpQr0QnwGjarreWNeeGEDKWF+ItTAgI++uDkPI0ahRAn4WmM6/luSoA9HR7L0EoNfiFkF9yuqdukeoH8ksrbUJi+wbm5YyG6zOMIQFCaLoVAAE8jMloxWXAPe27iA65inBvinTmCnL7LnLYsWabJtQPRIbEFJPRhQsxiRPO1+bHGErs0rYNfJ7Xj7jKNsbFpsB4rQ0sbi5rxX54IfkXqB0H2EwrQAYboSCS0eNmwW2ObAJdE3gzRFQw9SyJ336BQrE13i1PSiU5mlxtLdScCLtzwVKxyFEF2rs2ejx2/3QktG23QFn1M5kI6U5jCFKYwBTHh8X+k3A23Xhps8AAAAABJRU5ErkJggg==" alt=""></div>
+        <span class="card-title">18. Photography &amp; Commercial Use</span>
+      </div><span class="chevron">▲</span>
+    </div>
+    <div class="card-body">
+      <p data-lang="en">Personal photos and videos for private use are welcome. Sharing on personal social media without commercial agreements is fine. Commercial photography, sponsored content, or use of the villa as a professional shoot location requires prior written authorisation from the owner.</p>
+      <p data-lang="fr">Les photos personnelles à usage privé sont bienvenues. Le partage sur les réseaux sociaux sans accord commercial est autorisé. La photographie commerciale ou les contenus sponsorisés nécessitent une autorisation écrite préalable.</p>
+      <p data-lang="es">Las fotos personales para uso privado son bienvenidas. Compartir en redes sociales sin acuerdos comerciales está permitido. La fotografía comercial o contenido patrocinado requiere autorización escrita previa.</p>
+      <p data-lang="de">Private Fotos sind willkommen. Teilen ohne kommerzielle Vereinbarungen erlaubt. Kommerzielle Fotografie erfordert schriftliche Genehmigung.</p>
+    </div>
+  </div>
+
+  <!-- Agreement -->
+  <div class="card card-agree">
+    <div class="card-header" onclick="toggle(this)">
+      <div class="card-header-left">
+        <div class="icon-wrap"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAACXBIWXMAAAsTAAALEwEAmpwYAAAFc0lEQVR4nO2cTYgcRRiGS8EfFL0oSPwBxYN68KIHRRBRFFaymapWol5EQRINEYIXPU7c+WrW1YsBPawI6s73zaIXD5qIB8FLYtBERQQRETERFDFgkj2sRnel3F3drhndnZnqeau6+4E6Zafn6ffd/knXdikFRpPcry2fMFaWkUOTHDfE96qqo4l/RJdh/hl8TFUdfAmSG6rqoAswqReyvfnWuYbkSUN82JAspB6ICV0qyYK28lFmebfLqlD5xkz3ckP8aZl+Q02B+6KtHM2os6XAI6PYMkzJClk9Yo7snJ09J7y4O00VLW9LWMjK2BVe3F0zcocjv7uVXr9i5O1GVogakey5zpWGeH8uK+JDKjTa8un1X+K+OMR2y1aIQ7fmr/JOW6dUaIoKroyFjGW/khUv635t9AVVv6irDbZbuPi4dqxo6kLqQsJQFyJpFzLsdg14oPPYNHUhFSnk75m6CIowA05QlbYQN23qgoihjKzdnUDnoZIRiAx4HnCByIDnAReIDHgecIHIgOcBF4gMeB5wgciA5wEXiAx4HnCByIDnAReIDHgecIHIgOcBF4gMeB5wgciA5wEXiAx4HnCByIDnAReIDHgecIHIgOcBF4gMeB5wgaJYXj5LW9k76N8qw/OACxSEsbzD+WriX7Xlx1xBm/tcXUhw3OsUroj13u5oSSIPuEABGOK3Pe+T7lWCJPKACwRGt/hB31lbeTyZPOACATHtNy4xxD/lyiD+cLPXjyjygAsExJDM5XyJF++zcn1SecAFApG1uncZ4qX8qYqfTi4PuEAAJpuzF2iSbz3Xz4Z5bRmeB1wgANrKvrwnn8moc1OSecAFRqTR7t6iif/wTlWUbB5wgVFXobD8pXdX9fUjzdfOTzYPuMAIaOJn80eG/Klt5/ak84ALDIm7nXW3tfmjQ15SqecBFxiCZrN5trF8MOdG8n1j5tWLVOp5wAWGoGH5Kd+r0e40VBnyGIeAsbyj0ZK7Q/jq6fmr/QXWtGVWgSh9IRnJ9pWLLf/mHvyN6qtJ3vfuqn6ebMqlKhClLmT1ccbiv+d5XhrmccYamvhR3yez8pAKSKkLcacqd3QYbxva8vODPIF1bLPdy/x1gDXJO4NsQ1W9kJXPdx/wb0/XzvuDLCapid/0tnEy1NpelSrE0bB8pz+lulrKBxPNzsUbOrZ50v+sIX5iGJcNv6sKhTj0FN9orPzQE6yVL/5vSUFXmL8IwaCTToNQmUIc21pz17hnTX1+279rTHWuU33QJK94P7topuZvUAVRqULWplndgsR9Tl8ndGv+NrUOY+WOnkknkmdUgVSuEMc9L8xdqInf6z1SZCGj7lb3MxP7Dpynib/yyvi8kLVyq16Iw91hacvdniPFzW2Q7DQkM/l/4zNmWm5WBVPZQtYeEmriF/tcU5Z6Jp2Ip9UYqHQhaxgre/xrRchJp6TygAusotv8sCb5vfdiP/qkU1J5wAXW4Z4Iu9WivWvHy2qMwPOAC3hk1LlVk/yyWsaxzfxPvlR5wAX6YFrz1xqSb0JNOiWVB1zgPxj3kRFNHnCByIDnAReIDHgecIHIgOcBF4gMeB5wgciA5wEXiAx4HnCByIDnAReIDHgecIHIgOcBF4gMeB5wgciA5wEXiAx4HnCByIDnAReIDHgecIHIgOcBF4gMeB5wgciA5zGoQNWGqguRqEZdiI1r1IXYuEZ0hdTkqQupXCHen24W8SJlWXArm+YKITkV/EsM8eH8l/D+upT+ZWgrB9ZnpYkPqdBklnejL5wm1VHEm8ArbzLJUfjO2bSGJvm4sNfrMupsMSRH0Dtpkhn8ictMFYlr21jZ5dah0pZP43daohormfBBd5oa5sj4C0FLxjOuXHASAAAAAElFTkSuQmCC" alt=""></div>
+        <span class="card-title" style="color:var(--teal-dark)">Agreement</span>
+      </div><span class="chevron">▲</span>
+    </div>
+    <div class="card-body">
+      <p data-lang="en">By accessing the property, guests confirm that they have read, understood, and agree to comply with this House Standards &amp; Safety Policy and are responsible for informing all accompanying persons. Failure to comply may result in financial penalties, termination of stay without refund, and partial or full retention of the security deposit.</p>
+      <p data-lang="fr">En accédant à la propriété, les clients confirment avoir lu et accepté ce règlement et sont responsables d'en informer toutes les personnes accompagnatrices. Le non-respect peut entraîner des pénalités, la résiliation sans remboursement et la retenue de la caution.</p>
+      <p data-lang="es">Al acceder a la propiedad, los huéspedes confirman haber leído y aceptado este reglamento y son responsables de informar a todos los acompañantes. El incumplimiento podrá dar lugar a penalizaciones, resolución sin reembolso y retención de la fianza.</p>
+      <p data-lang="de">Durch das Betreten bestätigen Gäste, diese Hausordnung gelesen und akzeptiert zu haben. Verstöße können Strafen, Aufenthaltsbeendigung ohne Rückerstattung und Kautionseinbehalt zur Folge haben.</p>
+      <p style="margin-top:18px; text-align:center; font-size:15px">🌊☀️ <em>Thank you and enjoy your stay!</em></p>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <a href="https://www.navamira.com">www.navamira.com</a> &nbsp;·&nbsp; villas@navamira.com
+</footer>
+
+<script>
+  function toggle(h) { h.closest('.card').classList.toggle('open'); }
+  function setLang(lang) {
+    document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.textContent === lang.toUpperCase()));
+    document.querySelectorAll('.hero [data-lang]').forEach(el => el.style.display = el.dataset.lang === lang ? 'block' : 'none');
+    document.querySelectorAll('.card-body [data-lang]').forEach(el => {
+      if (el.dataset.lang === lang) {
+        el.style.display = el.tagName === 'UL' ? 'block' : 'block';
+      } else {
+        el.style.display = 'none';
+      }
+    });
+    document.querySelectorAll('.section-label[data-lang]').forEach(el => el.style.display = el.dataset.lang === lang ? 'block' : 'none');
+  }
+  setLang('en');
+</script>
+</body>
+</html>
